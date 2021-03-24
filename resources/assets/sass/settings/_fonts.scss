@@ -1,0 +1,82 @@
+$font-path: "/fonts";
+@font-face {
+  font-family: "Georgia";
+  src: url("#{$font-path}/Georgia.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Georgia-Bold";
+  src: url("#{$font-path}/georgia-bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+body {
+    font-size: rem-calc(16);
+    line-height: rem-calc(26);
+    color: #333333;
+    font-family: 'Georgia';
+    background-color: #fafafa;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5{
+    font-weight: bold;
+    font-family: $text-bold;
+    text-transform: uppercase;
+}
+
+h2, .h2{
+    font-size: rem-calc(26);
+    text-transform: uppercase;
+    &.topic{
+        &-dark{
+            color: $color-blue;
+        }
+        &-light{
+            color: $color-gray;
+        }
+    }
+}
+h3, .h3{
+    font-size: rem-calc(20);
+}
+h4, .h4{
+    font-size: rem-calc(16);
+}
+
+a{
+    font-family: $text-normal, sans-serif;
+    color: $color-blue;
+}
+
+time{
+    font-size: rem-calc(16);
+    font-family: $text-normal, sans-serif;
+}
+
+.view-all{
+    font-size: rem-calc(16);
+    line-height:  rem-calc(16);
+}
+
+p, ul{
+    font-family: $text-normal, sans-serif;
+    font-size: rem-calc(16);
+}
+
+.text-white{
+    color: #FFFFFF;
+}
+.pointer{
+    &:hover{
+        cursor: pointer;
+        text-decoration: none;
+    }
+}

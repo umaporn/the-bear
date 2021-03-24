@@ -1,0 +1,22 @@
+// Settings
+@import "settings/_variables";
+@import "settings/_fonts";
+
+// External libraries
+@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+
+@import "~swiper/css/swiper.min.css";
+@import "~aos/dist/aos.css";
+@import "~croppie/croppie.css";
+
+// Layouts
+@import "layouts/header";
+@import "layouts/content";
+
+//Components
+@import "components/menu";
+@import "components/text";
+@import "components/button";
+
+

@@ -1,0 +1,29 @@
+.side-menu {
+    background: transparent linear-gradient(180deg, #235347 0%, #1A433B 27%, #051F20 100%) 0% 0% no-repeat padding-box;
+    padding: 10px;
+    color: white;
+    height: 90%;
+
+    > li {
+        padding: 10px 0px;
+
+        > a {
+            color: white;
+            text-transform: uppercase;
+
+            &.active{
+                color: darken(white, 35%);
+                font-weight: bold;
+            }
+
+            &:hover {
+                color: darken(white, 15%);
+                text-decoration: none;
+            }
+
+            > img {
+                margin: 0px 10px 3px;
+            }
+        }
+    }
+}
