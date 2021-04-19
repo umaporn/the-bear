@@ -37,16 +37,5 @@
 @include('message_boxes.result')
 @include('message_boxes.confirmation')
 
-<script src="{{ mix('/js/app.js') }}"></script>
-<script src="{{ mix('/js/all.js') }}"></script>
-
-@yield('modal-script')
-
-@if(session()->has('message'))
-    <script type="text/javascript">
-		//alert('{{ session()->get('message') }}');
-		$('#login-error').modal('show');
-    </script>
-@endif
 </body>
 </html>

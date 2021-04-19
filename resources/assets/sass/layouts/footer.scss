@@ -1,0 +1,27 @@
+.footer-inner {
+    background-color: #333333;
+    color: #FAFAFA;
+}
+
+.footer-information {
+    border-top: 1px solid #dee2e6;
+}
+
+.footer-row{
+    width: 70%;
+    margin: 0 auto;
+}
+
+ul.footer-list{
+    font-family: 'Karla';
+    list-style-type:none;
+    > li > a{
+        font-family: 'Karla';
+        font-size: 12px;
+        color: #FAFAFA;
+    }
+}
+
+.footer-image{
+    width: 20%;
+}

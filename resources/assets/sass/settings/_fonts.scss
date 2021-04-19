@@ -13,6 +13,12 @@ $font-path: "/fonts";
   font-style: normal;
 }
 
+@font-face {
+    font-family: "Karla";
+    src: url("#{$font-path}/Karla-Regular.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
 
 body {
     font-size: rem-calc(16);
