@@ -24,9 +24,8 @@ mix.js( [
                'resources/assets/js/components/Utility.js',
                'resources/assets/js/components/PasswordToggle.js',
                'resources/assets/js/components/Footer.js',
-               'resources/assets/js/components/TableLink.js',
                'resources/assets/js/components/FileUpload.js',
-               'resources/assets/js/components/CancelJoin.js',
+               'resources/assets/js/components/SkinToggle.js',
                'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

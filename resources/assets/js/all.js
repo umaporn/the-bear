@@ -27,4 +27,5 @@ $( document )
         Form.initialize();
         Footer.initialize();
         PasswordToggle.initialize();
+        SkinToggle.initialize();
     } );

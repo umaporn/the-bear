@@ -27,3 +27,16 @@
         }
     }
 }
+
+@include media-breakpoint-down(sm) {
+    .logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .header-bar{
+        padding-top: 40px;
+        text-align:center;
+    }
+}

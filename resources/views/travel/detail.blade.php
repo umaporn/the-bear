@@ -21,6 +21,7 @@
         ]) )
 
 @section('content')
+
     <div class="container pt-1">
         <div>
             <img src="{{ asset('images/placeholder.png') }}" alt="" class="w-100">
@@ -64,7 +65,7 @@
             <h5>More From The Bear Travel</h5>
             <div class="container more-form-box">
                 <div class="row align-items-start">
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -80,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -96,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -114,7 +115,7 @@
                     </div>
                 </div>
                 <div class="row align-items-center pt-2">
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -130,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">
@@ -146,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md-4 col-xs-6">
                         <div class="card m-1" style="border:none;">
                             <div class="row g-0">
                                 <div class="col-md-8">

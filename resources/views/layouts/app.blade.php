@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
-
-    @include('google_tag_manager.script')
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +25,7 @@
     <script type="text/javascript" src="https://unpkg.com/@passbase/button@v3/button.js"></script>
 
 </head>
-<body style="background-color: #fafafa;">
-@include('google_tag_manager.noscript')
+<body>
 
 @include('layouts.header')
 @include('layouts.content')
@@ -36,6 +33,9 @@
 
 @include('message_boxes.result')
 @include('message_boxes.confirmation')
+
+<script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/all.js') }}"></script>
 
 </body>
 </html>
