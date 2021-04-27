@@ -5,9 +5,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\ServiceRequest;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Models\Content;
+use Illuminate\Support\Arr;
 
 /**
  * Travel Page Controller
@@ -15,12 +19,25 @@ use Illuminate\Http\Request;
  */
 class TravelController extends Controller
 {
+    /** @var Content Content model */
+    protected $contentModel;
+
+    /**
+     * Initialize ContentController class.
+     *
+     * @param Content $content Users model
+     */
+    public function __construct( Content $content )
+    {
+        $this->contentModel = $content;
+    }
+
     /**
      * Display travel page.
      *
      * @return Factory|View Travel page
      */
-    public function index( Request $request)
+    public function index( Request $request )
     {
         return view( 'travel.index' );
     }
@@ -30,8 +47,37 @@ class TravelController extends Controller
      *
      * @return Factory|View Travel page
      */
-    public function detail( Request $request )
+    public function detail( $id )
     {
-        return view( 'travel.detail' );
+        $contentDetail = $this->contentModel->getContentDetail( $id );
+        $mainImage    = $this->getMainImage( $contentDetail );
+        $galleryImage = $this->getGalleryImage( $contentDetail );
+        $moreContent  = $this->getMoreContent( $id );
+
+        return view( 'travel.detail', compact( 'contentDetail', 'mainImage', 'moreContent', 'galleryImage' ) );
+    }
+
+    private function getMainImage( $contentDetail )
+    {
+        return ServiceRequest::call( 'GET',
+                                     '/assets/' . $contentDetail['data'][0]->main_image,
+                                     true, );
+    }
+
+    private function getGalleryImage( $contentDetail )
+    {
+
+        foreach( $contentDetail['image'] as $image ){
+            $transformImage = ServiceRequest::call( 'GET',
+                                                    '/assets/' . $image[0]->image,
+                                                    true, );
+            $image->newImage = $transformImage;
+        }
+        return $contentDetail['image'];
+    }
+
+    private function getMoreContent( $id )
+    {
+        return $this->contentModel->getMoreContent( $id );
     }
 }

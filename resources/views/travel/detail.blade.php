@@ -1,171 +1,67 @@
 @extends('layouts.app')
 
 @section('page-title', __('travel.page_title.detail', [
-            'travel_title' => '',
+            'travel_title' => $contentDetail['data'][0]->title,
         ]))
 @section('page-description', __('travel.page_description.detail', [
-            'travel_description'  => '',
+            'travel_description' => $contentDetail['data'][0]->description,
         ]))
-@section('page-keyword', __('travel.page_keyword.detail'))
+@section('page-keyword', __('travel.page_keyword.detail',[
+            'travel_keyword' => $contentDetail['data'][0]->keyword,
+        ]))
 
 @section('og-image', asset(''))
 @section('og-title', __('travel.og_title.detail', [
-            'travel_title' => '',
+            'travel_title' => $contentDetail['data'][0]->title,
         ] ))
 @section('og-description', __('travel.og_description.detail', [
-            'travel_description'  => '',
+            'travel_description' => $contentDetail['data'][0]->description,
         ] ))
-@section('og-keyword', __('travel.og_keyword.detail'))
+@section('og-keyword', __('travel.og_keyword.detail',[
+            'travel_keyword' => $contentDetail['data'][0]->keyword,
+        ]))
 @section('og-url', __('travel.og_url.detail',[
-            'travel_id' => '',
+            'travel_id' => $contentDetail['data'][0]->id,
+            'slug' => str_replace(" ", "-", $contentDetail['data'][0]->title)
         ]) )
 
 @section('content')
 
     <div class="container pt-1">
         <div>
-            <img src="{{ asset('images/placeholder.png') }}" alt="" class="w-100">
+            <img src="data:image/png;base64,{{ $mainImage }}" class="w-100" alt="">
         </div>
         <div class="container content-detail pt-2">
             <div class="lead"> 2 Wheels | South of Thailand</div>
             <div class="row pt-2">
-                <div class="col text-left">BY Grumpy Bear</div>
-                <div class="col text-right">BY Grumpy Bear</div>
+                <div class="col text-left">BY {{ $contentDetail['data'][0]['Author']->name }}</div>
             </div>
 
             <div class="row pt-2">
                 <div class="col">
-                    <h1>Title</h1>
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
+                    <h1>{{ $contentDetail['data'][0]->title }}</h1>
+                    {!! $contentDetail['data'][0]->content !!}
                 </div>
             </div>
-
-
-        </div>
-
-        <div class="row pt-3">
-            <h5>More From The Bear Travel</h5>
-            <div class="container more-form-box">
-                <div class="row align-items-start">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+                <h4>Gallery</h4>
+                    <div id="columns">
+                    @foreach($galleryImage as $image)
+                            <figure>
+                                <a href="data:image/png;base64,{{ $image->newImage }}"
+                                   class="gallery-pic" data-fancybox="gallery-units"
+                                   data-caption="{{ $image[0]->description }}">
+                                    <img src="data:image/png;base64,{{ $image->newImage }}"
+                                         alt="{{ $image[0]->alt_tag }}">
+                                </a>
+                                <figcaption>{{ $image[0]->description }}</figcaption>
+                            </figure>
+                    @endforeach
                     </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center pt-2">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="card m-1" style="border:none;">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body p-0">
-                                        <h6 class="card-title">Card title</h6>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{ asset('images/100x100.png') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        @include('travel.more')
+
     </div>
 @endsection

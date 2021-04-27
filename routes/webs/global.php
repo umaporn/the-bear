@@ -25,7 +25,7 @@ function globalRoutes()
         Route::get( 'group/{slug}/{id}', 'GroupController@detail' )->name( 'group.detail' );
 
         Route::get( 'travel', 'TravelController@index' )->name( 'travel.index' );
-        Route::get( 'travel/{slug}/{id}', 'TravelController@detail' )->name( 'travel.detail' );
+        Route::get( 'travel/{id}/{slug}', 'TravelController@detail' )->name( 'travel.detail' );
 
         // Authentication
         Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
