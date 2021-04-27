@@ -33,15 +33,17 @@
         </div>
         <div class="container content-detail pt-2">
             <div class="lead">
-                @foreach( $contentDetail['menu'] as $menu )
+                @if($contentDetail['menu'])
+                    @foreach( $contentDetail['menu'] as $menu )
                         {{ $menu['menuName'] }}
-                    @if(!$loop->last)
-                        |
+                        @if(!$loop->last)
+                            |
                         @endif
                     @endforeach
+                @endif
             </div>
             <div class="row pt-2">
-                <div class="col text-left">BY {{ $contentDetail['data'][0]['Author']->name }}</div>
+                <div class="col text-left">BY {{ $contentDetail['data'][0]['Author'] ? $contentDetail['data'][0]['Author']->name : '' }}</div>
             </div>
 
             <div class="row pt-2">
@@ -52,19 +54,19 @@
             </div>
             <div class="row">
                 <h4>Gallery</h4>
-                    <div id="columns">
+                <div id="columns">
                     @foreach($galleryImage as $image)
-                            <figure>
-                                <a href="data:image/png;base64,{{ $image->newImage }}"
-                                   class="gallery-pic" data-fancybox="gallery-units"
-                                   data-caption="{{ $image[0]->description }}">
-                                    <img src="data:image/png;base64,{{ $image->newImage }}"
-                                         alt="{{ $image[0]->alt_tag }}">
-                                </a>
-                                <figcaption>{{ $image[0]->description }}</figcaption>
-                            </figure>
+                        <figure>
+                            <a href="data:image/png;base64,{{ $image->newImage }}"
+                               class="gallery-pic" data-fancybox="gallery-units"
+                               data-caption="{{ $image[0]->description }}">
+                                <img src="data:image/png;base64,{{ $image->newImage }}"
+                                     alt="{{ $image[0]->alt_tag }}">
+                            </a>
+                            <figcaption>{{ $image[0]->description }}</figcaption>
+                        </figure>
                     @endforeach
-                    </div>
+                </div>
             </div>
         </div>
 

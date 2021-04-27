@@ -67,28 +67,32 @@ class Content extends Model
 
     private function getMenu( $data )
     {
-        $menuText      = [];
-        $menuFirst     = $data[0]->Menu;
-        $upperID       = $menuFirst->upper_id;
-        $sortID        = $menuFirst->sort_id;
-        $menuNameFirst = $menuFirst->menu_name;
+        $menuText = [];
 
-        array_push( $menuText, [ 'sortID' => $sortID, 'menuName' => $menuNameFirst ] );
+        if( $data[0]->Menu !== null ){
 
-        if( $upperID ){
-            $menuSecond = DB::table( 'menu' )->where( 'id', $upperID )->get();
-            array_push( $menuText, [ 'sortID' => $menuSecond[0]->sort_id, 'menuName' => $menuSecond[0]->menu_name ] );
+            $menuFirst     = $data[0]->Menu;
+            $upperID       = $menuFirst->upper_id;
+            $sortID        = $menuFirst->sort_id;
+            $menuNameFirst = $menuFirst->menu_name;
 
-            if( $menuSecond[0]->upper_id ){
-                $menuThird = DB::table( 'menu' )->where( 'id', $menuSecond[0]->upper_id )->get();
-                array_push( $menuText, [ 'sortID' => $menuThird[0]->sort_id, 'menuName' => $menuThird[0]->menu_name ] );
+            array_push( $menuText, [ 'sortID' => $sortID, 'menuName' => $menuNameFirst ] );
 
+            if( $upperID ){
+                $menuSecond = DB::table( 'menu' )->where( 'id', $upperID )->get();
+                array_push( $menuText, [ 'sortID' => $menuSecond[0]->sort_id, 'menuName' => $menuSecond[0]->menu_name ] );
+
+                if( $menuSecond[0]->upper_id ){
+                    $menuThird = DB::table( 'menu' )->where( 'id', $menuSecond[0]->upper_id )->get();
+                    array_push( $menuText, [ 'sortID' => $menuThird[0]->sort_id, 'menuName' => $menuThird[0]->menu_name ] );
+
+                }
             }
-        }
 
-        usort($menuText, function($a, $b) {
-            return $a['sortID'] <=> $b['sortID'];
-        });
+            usort( $menuText, function( $a, $b ){
+                return $a['sortID'] <=> $b['sortID'];
+            } );
+        }
 
         return $menuText;
     }
