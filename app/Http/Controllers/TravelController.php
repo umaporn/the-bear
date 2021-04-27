@@ -50,6 +50,7 @@ class TravelController extends Controller
     public function detail( $id )
     {
         $contentDetail = $this->contentModel->getContentDetail( $id );
+
         $mainImage    = $this->getMainImage( $contentDetail );
         $galleryImage = $this->getGalleryImage( $contentDetail );
         $moreContent  = $this->getMoreContent( $id );

@@ -45,12 +45,52 @@ class Content extends Model
         return $this->hasMany( 'App\Models\Gallery', 'content_id' );
     }
 
+    /**
+     * Get Menu model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Menu model relationship
+     */
+    public function Menu()
+    {
+        return $this->belongsTo( 'App\Models\Menu', 'menu' );
+    }
+
     public function getContentDetail( $id )
     {
-        $data    = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
+        $data    = $this->with( [ 'Author', 'Gallery', 'Menu' ] )->where( [ 'id' => $id ] )->get();
         $image   = $this->getGallery( $data );
-        $content = [ 'data' => $data, 'image' => $image ];
+        $menu    = $this->getMenu( $data );
+        $content = [ 'data' => $data, 'image' => $image, 'menu' => $menu ];
+
         return $content;
+    }
+
+    private function getMenu( $data )
+    {
+        $menuText      = [];
+        $menuFirst     = $data[0]->Menu;
+        $upperID       = $menuFirst->upper_id;
+        $sortID        = $menuFirst->sort_id;
+        $menuNameFirst = $menuFirst->menu_name;
+
+        array_push( $menuText, [ 'sortID' => $sortID, 'menuName' => $menuNameFirst ] );
+
+        if( $upperID ){
+            $menuSecond = DB::table( 'menu' )->where( 'id', $upperID )->get();
+            array_push( $menuText, [ 'sortID' => $menuSecond[0]->sort_id, 'menuName' => $menuSecond[0]->menu_name ] );
+
+            if( $menuSecond[0]->upper_id ){
+                $menuThird = DB::table( 'menu' )->where( 'id', $menuSecond[0]->upper_id )->get();
+                array_push( $menuText, [ 'sortID' => $menuThird[0]->sort_id, 'menuName' => $menuThird[0]->menu_name ] );
+
+            }
+        }
+
+        usort($menuText, function($a, $b) {
+            return $a['sortID'] <=> $b['sortID'];
+        });
+
+        return $menuText;
     }
 
     private function getGallery( $data )
@@ -72,7 +112,8 @@ class Content extends Model
         return $image;
     }
 
-    public function getMoreContent( $id )
+    public
+    function getMoreContent( $id )
     {
         $data = $this->with( [ 'Author' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
 
@@ -86,7 +127,8 @@ class Content extends Model
      *
      * @return LengthAwarePaginator Home news list for display
      */
-    private function transformContent( $data )
+    private
+    function transformContent( $data )
     {
 
         foreach( $data as $list ){

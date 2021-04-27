@@ -32,7 +32,14 @@
             <img src="data:image/png;base64,{{ $mainImage }}" class="w-100" alt="">
         </div>
         <div class="container content-detail pt-2">
-            <div class="lead"> 2 Wheels | South of Thailand</div>
+            <div class="lead">
+                @foreach( $contentDetail['menu'] as $menu )
+                        {{ $menu['menuName'] }}
+                    @if(!$loop->last)
+                        |
+                        @endif
+                    @endforeach
+            </div>
             <div class="row pt-2">
                 <div class="col text-left">BY {{ $contentDetail['data'][0]['Author']->name }}</div>
             </div>
