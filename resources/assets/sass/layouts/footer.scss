@@ -7,22 +7,39 @@
     border-top: 1px solid #dee2e6;
 }
 
-.footer-row{
+.footer-row {
     width: 70%;
     margin: 0 auto;
-    padding-top:20px;
+    padding-top: 20px;
+    @include media-breakpoint-down(sm) {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
 }
 
-ul.footer-list{
+ul.footer-list {
     font-family: 'Karla';
-    list-style-type:none;
-    > li > a{
+    list-style-type: none;
+
+    > li > a {
         font-family: 'Karla';
         font-size: 12px;
         color: #FAFAFA;
     }
+
+    @include media-breakpoint-down(sm) {
+        padding-inline-start: 20px;
+    }
 }
 
-.footer-image{
+.footer-image {
     width: 20%;
+    @include media-breakpoint-down(sm) {
+
+        margin-top: 10px;
+        width: 100px;
+        height: 30px;
+
+    }
 }

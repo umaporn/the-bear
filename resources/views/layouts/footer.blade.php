@@ -32,15 +32,15 @@
                     <ul class="footer-list">
                         <li class="text-uppercase">Follow us</li>
                         <div class="row">
-                            <div class="col"><img src="{{ asset('images/ig.png') }}"></div>
-                            <div class="col"><img src="{{ asset('images/fb.png') }}"></div>
-                            <div class="col"><img src="{{ asset('images/yt.png') }}"></div>
+                            <img src="{{ asset('images/ig.png') }}" class="pr-2">
+                            <img src="{{ asset('images/fb.png') }}" class="pr-2">
+                            <img src="{{ asset('images/yt.png') }}" class="pr-2">
                         </div>
                     </ul>
                 </div>
             </div>
             <div class="footer-information">
-                <div class="row footer-row p-3">
+                <div class="row footer-row">
                     <img src="{{ asset('images/logo/tbt-travel.png') }}" class="footer-image">
                     <div style="margin: auto;width:70%;">
                         <small>

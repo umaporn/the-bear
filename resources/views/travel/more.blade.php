@@ -1,4 +1,4 @@
-<div class="row pt-3">
+<div class="container row pt-3">
     <h5>More From The Bear Travel</h5>
     <div class="container more-form-box">
         @foreach($moreContent as $moreItem)
