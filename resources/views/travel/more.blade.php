@@ -10,7 +10,7 @@
                             <div class="row g-0">
                                 <div class="col-md-8">
                                     <div class="card-body p-0">
-                                        <h6 class="card-title" ><a href="{{ route('travel.detail', [ 'id' => $moreItem->id, 'slug' => $moreItem->title ]) }}" class="detail-link">{{ $moreItem->title }}</a></h6>
+                                        <h6 class="card-title" ><a href="{{ route('travel.detail', [ 'id' => $moreItem->id, 'slug' => str_replace(' ', '-', $moreItem->title) ]) }}" class="detail-link">{{ $moreItem->title }}</a></h6>
                                         @if($moreItem['Author'])
                                             <p class="card-text">
                                                 <small class="text-muted">{{ $moreItem['Author']->name }}</small>
