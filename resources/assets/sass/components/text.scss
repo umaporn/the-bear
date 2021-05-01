@@ -39,3 +39,10 @@ p.help-text{
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+a{
+    color: #212529;
+    :hover{
+        color: lighten(#212529, 35%);
+    }
+}

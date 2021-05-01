@@ -1,18 +1,16 @@
 .side-menu {
-    background: transparent linear-gradient(180deg, #235347 0%, #1A433B 27%, #051F20 100%) 0% 0% no-repeat padding-box;
     padding: 10px;
-    color: white;
     height: 90%;
-
+    font-size: 18px;
     > li {
-        padding: 10px 0px;
+        padding: 5px 0px;
 
         > a {
-            color: white;
+            color: #212529;
             text-transform: uppercase;
 
             &.active{
-                color: darken(white, 35%);
+                color: lighten(#212529, 35%);
                 font-weight: bold;
             }
 
@@ -24,12 +22,13 @@
             > img {
                 margin: 0px 10px 3px;
             }
+
         }
     }
 }
 
 @include media-breakpoint-down(sm) {
-    .logo{
+    /*.logo{
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -38,5 +37,15 @@
     .header-bar{
         padding-top: 40px;
         text-align:center;
-    }
+    }*/
 }
+
+.main-menu{
+    //border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+li.nav-item:last-child{
+    border-bottom: 1px solid #ccc;
+}
+
