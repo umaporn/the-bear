@@ -10,6 +10,7 @@ const SkinToggle = (function(){
 	 */
 	function initialize(){
 		$("#skin-toggle").click(function() {
+			window.console.log('desktop toggle');
 			if($(this).prop("checked") == true){
 				$('body').addClass('dark-mode');
 			}
@@ -19,6 +20,7 @@ const SkinToggle = (function(){
 		});
 
 		$("#skin-toggle-body").click(function() {
+			window.console.log('mobile toggle');
 			if($(this).prop("checked") == true){
 				$('body').addClass('dark-mode');
 			}

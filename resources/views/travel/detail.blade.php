@@ -33,14 +33,14 @@
         </div>
         <div class="container content-detail pt-2">
             <div class="lead">
-                @if($contentDetail['menu'])
+                {{--@if($contentDetail['menu'])
                     @foreach( $contentDetail['menu'] as $menu )
                         {{ $menu['menuName'] }}
                         @if(!$loop->last)
                             |
                         @endif
                     @endforeach
-                @endif
+                @endif--}}
             </div>
             <div class="row pt-2">
                 <div class="col text-left">BY {{ $contentDetail['data'][0]['Author'] ? $contentDetail['data'][0]['Author']->name : '' }}</div>
@@ -61,9 +61,8 @@
                                class="gallery-pic" data-fancybox="gallery-units"
                                data-caption="{{ $image[0]->description }}">
                                 <img src="data:image/png;base64,{{ $image->newImage }}"
-                                     alt="{{ $image[0]->alt_tag }}">
+                                     alt="{{ $image[0]->alt_tag }}" title="{{ $image[0]->alt_tag }}">
                             </a>
-                            <figcaption>{{ $image[0]->description }}</figcaption>
                         </figure>
                     @endforeach
                 </div>

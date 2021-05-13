@@ -57,41 +57,88 @@ class Content extends Model
 
     public function getContentDetail( $id )
     {
-        $data    = $this->with( [ 'Author', 'Gallery', 'Menu' ] )->where( [ 'id' => $id ] )->get();
+        $data    = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
         $image   = $this->getGallery( $data );
-        $menu    = $this->getMenu( $data );
+        $menu    = $this->getMenu();
         $content = [ 'data' => $data, 'image' => $image, 'menu' => $menu ];
 
         return $content;
     }
 
-    private function getMenu( $data )
+    private function getMenu()
     {
-        $menuText = [];
+        $menuText       = [];
+        $menuFirstText  = [];
+        $menuSecondText = [];
+        $menuThirdText  = [];
 
-        if( $data[0]->Menu !== null ){
+        $menuFirst = DB::table( 'menu' )
+                       ->where( [
+                                    'language' => 'EN',
+                                    'sitename' => '5',
+                                    'status'   => 'enable',
+                                ] )
+                       ->whereNull( 'upper_id' )
+                       ->orderBy( 'sort_id', 'asc' )
+                       ->get();
 
-            $menuFirst     = $data[0]->Menu;
-            $upperID       = $menuFirst->upper_id;
-            $sortID        = $menuFirst->sort_id;
-            $menuNameFirst = $menuFirst->menu_name;
+        foreach( $menuFirst as $menuFirstItem ){
+            $id            = $menuFirstItem->id;
+            $sortID        = $menuFirstItem->sort_id;
+            $menuNameFirst = $menuFirstItem->menu_name;
 
-            array_push( $menuText, [ 'sortID' => $sortID, 'menuName' => $menuNameFirst ] );
+            $menuSecond = DB::table( 'menu' )
+                            ->where( [
+                                         'language' => 'EN',
+                                         'sitename' => '5',
+                                         'status'   => 'enable',
+                                         'upper_id' => $id,
+                                     ] )
+                            ->orderBy( 'sort_id', 'asc' )
+                            ->get();
 
-            if( $upperID ){
-                $menuSecond = DB::table( 'menu' )->where( 'id', $upperID )->get();
-                array_push( $menuText, [ 'sortID' => $menuSecond[0]->sort_id, 'menuName' => $menuSecond[0]->menu_name ] );
+            foreach( $menuSecond as $menuSecondItem ){
+                $secondID       = $menuSecondItem->id;
+                $secondSortID   = $menuSecondItem->sort_id;
+                $menuNameSecond = $menuSecondItem->menu_name;
 
-                if( $menuSecond[0]->upper_id ){
-                    $menuThird = DB::table( 'menu' )->where( 'id', $menuSecond[0]->upper_id )->get();
-                    array_push( $menuText, [ 'sortID' => $menuThird[0]->sort_id, 'menuName' => $menuThird[0]->menu_name ] );
+                $menuThird = DB::table( 'menu' )
+                               ->where( [
+                                            'language' => 'EN',
+                                            'sitename' => '5',
+                                            'status'   => 'enable',
+                                            'upper_id' => $secondID,
+                                        ] )
+                               ->orderBy( 'sort_id', 'asc' )
+                               ->get();
 
+                foreach( $menuThird as $menuThirdItem ){
+
+                    $thirdID       = $menuThirdItem->id;
+                    $thirdSortID   = $menuThirdItem->sort_id;
+                    $menuNameThird = $menuThirdItem->menu_name;
+
+                    array_push( $menuThirdText, [
+                        'id'       => $thirdID,
+                        'menuName' => $menuNameThird,
+                    ] );
                 }
+
+                array_push( $menuSecondText, [
+                    'id'        => $secondID,
+                    'menuName'  => $menuNameSecond,
+                    'menuThird' => $menuThirdText,
+                ] );
+
+                $menuThirdText = [];
             }
 
-            usort( $menuText, function( $a, $b ){
-                return $a['sortID'] <=> $b['sortID'];
-            } );
+            array_push( $menuText,
+                        [ 'id'            => $id,
+                          'menuName'      => $menuNameFirst,
+                          'menuSecondary' => $menuSecondText, ] );
+
+            $menuSecondText = [];
         }
 
         return $menuText;

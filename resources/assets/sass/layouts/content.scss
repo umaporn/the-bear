@@ -1,4 +1,4 @@
-.dark-mode{
+.dark-mode {
     background-color: #152028;
     color: #dee2e6;
 
@@ -6,32 +6,55 @@
         opacity: 0.5;
     }
 
-    i,button{
+    i, button {
         color: #dee2e6;
     }
-    .more-form-box, .card{
+
+    .more-form-box, .card {
         background-color: #152028;
         color: #dee2e6;
     }
 
-    a, .nav-item > a, .search{
+    a, .nav-item > a, .search {
         color: #dee2e6;
     }
 
-    .navbar-toggler{
+    .navbar-toggler {
         background-color: #dee2e6;
+    }
+
+    a.detail-link {
+        color: #dee2e6;
+        text-decoration: none;
+
+        &:hover {
+            color: lighter(#dee2e6, 10%);
+            text-decoration: none;
+        }
     }
 }
 
-body{
+body {
     background-color: #fafafa;
 }
 
-.content-detail{
-    width: 80%;
+.content-detail {
+    max-width: 660px;
 }
 
-.more-form-box{
+@media screen and (max-width: 660px) {
+    .content-detail {
+        font-size: 14px;
+        padding: 0px 10px;
+        max-width: 660px;
+    }
+    .container, .container-sm{
+        max-width: 660px;
+    }
+}
+
+
+.more-form-box {
     background-color: white;
     padding: 30px;
 }
@@ -120,19 +143,25 @@ div#columns small a {
     transition: .4s color;
 }
 
-figure(:hover) {
+figure(:hover)
+{
     opacity: 0.4;
 }
 
 @media screen and (max-width: 750px) {
-    #columns { column-gap: 0px; }
-    #columns figure { width: 100%; }
+    #columns {
+        column-gap: 0px;
+    }
+    #columns figure {
+        width: 100%;
+    }
 }
 
-a.detail-link{
+a.detail-link {
     color: #5c5c5d;
     text-decoration: none;
-    &:hover{
+
+    &:hover {
         color: darken(#5c5c5d, 10%);
         text-decoration: none;
     }

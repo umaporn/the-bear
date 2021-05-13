@@ -1,5 +1,4 @@
 <div class="p-3 row justify-content-between">
-    <img src="{{ asset('images/logo/global_carbon_holding_logo_small.png') }}"/>
     <nav class="navbar navbar-expand-xl navbar-light d-md-none" style="text-align:right;">
         <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

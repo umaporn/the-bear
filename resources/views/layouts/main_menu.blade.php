@@ -3,8 +3,8 @@
         {!! $menuItem['menuText'] !!}
     </a>
     @if( count( $menuItem['childMenu'] ) )
-    <ul class="dtgo-mainmenu-child">
-        @each( 'layouts.main_menu', $menuItem['childMenu'], 'menuItem' )
-    </ul>
+        <ul class="dtgo-mainmenu-child">
+            @each( 'layouts.main_menu', $menuItem['childMenu'], 'menuItem' )
+        </ul>
     @endif
 </li>
