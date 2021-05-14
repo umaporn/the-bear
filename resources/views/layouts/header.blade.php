@@ -17,7 +17,8 @@
                                     <label for="drop-2" class="toggle">Menu
                                         <i class="fas fa-sort-down"></i>
                                     </label>
-                                    <a href="#">MENU <i class="fa fa-sort-down icon-down"></i></a>
+                                    <a href="#" style="font-size:20px">MENU
+                                        <i class="fa fa-sort-down icon-down"></i></a>
                                     <input type="checkbox" id="drop-2"/>
                                     <ul>
                                         @foreach($contentDetail['menu'] as $menu )
@@ -41,13 +42,13 @@
                                                                     <input type="checkbox" id="drop-3"/>
                                                                     <ul>
                                                                         @foreach($secondary['menuThird'] as $third)
-                                                                        <li><a href="#">
-                                                                                {{ $third['menuName'] }}
-                                                                            </a>
-                                                                        </li>
-                                                                            @endforeach
+                                                                            <li><a href="#">
+                                                                                    {{ $third['menuName'] }}
+                                                                                </a>
+                                                                            </li>
+                                                                        @endforeach
                                                                     </ul>
-                                                                    @endif
+                                                                @endif
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -63,8 +64,12 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <span class="text-a"></span>
+                            <input type="range" class="slider" min="1" max="3" step="1" id="customRange3">
+                            <span class="text-a-last"></span>
                         </nav>
                     </div>
+
                     <nav class="navbar navbar-expand-xl navbar-light d-md-none float-right">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
