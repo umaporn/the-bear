@@ -49,7 +49,7 @@
             <div class="row pt-2">
                 <div class="col">
                     <h1>{{ $contentDetail['data'][0]->title }}</h1>
-                    {!! $contentDetail['data'][0]->content !!}
+                    {!! $contentDetail['newContent'] !!}
                 </div>
             </div>
             <div class="row">

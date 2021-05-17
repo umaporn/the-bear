@@ -58,12 +58,69 @@ class Content extends Model
     public function getContentDetail( $id )
     {
         $data          = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
+        $newContent    = $this->transformContentDetail( $data[0]->content );
         $image         = $this->getGallery( $data );
         $menu          = $this->getMenu();
-        $menuIncontent = $this->getMenuInContent($id);
-        $content       = [ 'data' => $data, 'image' => $image, 'menu' => $menu, 'menuInContent' => $menuIncontent ];
+        $menuIncontent = $this->getMenuInContent( $id );
+        $content       = [ 'data' => $data, 'image' => $image, 'menu' => $menu, 'menuInContent' => $menuIncontent, 'newContent' => $newContent ];
 
         return $content;
+    }
+
+    private function transformContentDetail( $data )
+    {
+        $albumName = [];
+        $imageItem = [];
+
+        $components = explode( ']]', $data );
+
+        foreach( $components as $item ){
+            $tags = explode( '[[', $item );
+
+            if( isset( $tags[1] ) ){
+
+                $galleryID = DB::table( 'gallery' )
+                               ->where( [
+                                            'name'   => $tags[1],
+                                            'status' => 'enable',
+                                        ] )
+                               ->get();
+
+                $imageID = DB::table( 'gallery_image' )
+                             ->where( [
+                                          'gallery_id' => $galleryID[0]->id,
+                                      ] )
+                             ->get();
+                $imageStr = '';
+                foreach( $imageID as $imageItem ){
+                    $image_id  = $imageItem->image_id;
+                    $imageData = DB::table( 'image' )->where( 'id', $image_id )->get();
+                    $imageStr  .= $this->getImage( $imageData->toArray() );
+                }
+                $data = str_replace( '[[' . $tags[1] . ']]', '<div id="columns">' . $imageStr . '</div>', $data );
+            }
+        }
+
+        return $data;
+    }
+
+    private function getImage( $imageData )
+    {
+        $imageStrInfo = '';
+        foreach( $imageData as $imageItem ){
+            $imageStr = '<figure>';
+            $image    = ServiceRequest::call( 'GET',
+                                              '/assets/' . $imageItem->image,
+                                              true, );
+            $imageStr .= '<a href="data:image/png;base64,'.$image.'"
+                               class="gallery-pic" data-fancybox="gallery-units"
+                               data-caption="'.$imageItem->description.'"><img src="data:image/png;base64,' . $image . '"
+                                     alt="' . $imageItem->alt_tag . '" title="' . $imageItem->alt_tag . '"></a>';
+
+            $imageStr .= '</figure>';
+        }
+
+        return $imageStrInfo . $imageStr;
     }
 
     private function getMenu()
@@ -198,7 +255,7 @@ class Content extends Model
         return $data;
     }
 
-    private function getMenuInContent($id)
+    private function getMenuInContent( $id )
     {
         $menuText       = [];
         $menuFirstText  = [];
