@@ -1,7 +1,10 @@
 .dark-mode {
     background-color: #152028;
     color: #dee2e6;
-
+    .header{
+        background-color: #152028;
+        color: #dee2e6;
+    }
     img {
         opacity: 0.5;
     }
@@ -31,6 +34,24 @@
             color: lighter(#dee2e6, 10%);
             text-decoration: none;
         }
+    }
+
+    nav ul li {
+        background: #152028;
+        z-index:9;
+    }
+    nav a {
+        color: #dee2e6;
+        background: #152028;
+    }
+    nav a:hover {
+        color: lighter(#dee2e6, 10%);
+    }
+    .slider{
+        background: #dee2e6;
+    }
+    .slider:before,.slider:after {
+        background: #dee2e6;
     }
 }
 

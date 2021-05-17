@@ -26,6 +26,7 @@ mix.js( [
                'resources/assets/js/components/Footer.js',
                'resources/assets/js/components/FileUpload.js',
                'resources/assets/js/components/SkinToggle.js',
+               'resources/assets/js/components/Fonts.js',
                'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

@@ -89,6 +89,7 @@ nav ul {
     margin: 0;
     list-style: none;
     position: relative;
+    z-index:999;
 }
 
 /* Positioning the navigation items inline */
@@ -96,6 +97,8 @@ nav ul li {
     margin: 0px;
     display: inline-block;
     float: left;
+    background: #fafafa;
+    z-index:999;
 }
 
 /* Styling the links */
@@ -127,11 +130,11 @@ nav a:hover {
  * and giving it a position of absolute */
 nav ul ul {
     display: none;
-    position: absolute;
+    position: fixed;
     /* has to be the same number as the "line-height" of "nav a" */
-    top: 40px;
+    //top: 45px;
     right:10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+    z-index:999;
 }
 
 /* Display Dropdowns on Hover */
@@ -167,7 +170,7 @@ nav ul ul ul {
     top: -50px;
     !* has to be the same number as the "width" of "nav ul ul li" *!
     left: -130px;*/
-    right:40px;
+    right:50px;
 }
 
 /* Change ' +' in order to change the Dropdown symbol */

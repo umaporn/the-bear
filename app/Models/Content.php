@@ -57,10 +57,11 @@ class Content extends Model
 
     public function getContentDetail( $id )
     {
-        $data    = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
-        $image   = $this->getGallery( $data );
-        $menu    = $this->getMenu();
-        $content = [ 'data' => $data, 'image' => $image, 'menu' => $menu ];
+        $data          = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
+        $image         = $this->getGallery( $data );
+        $menu          = $this->getMenu();
+        $menuIncontent = $this->getMenuInContent($id);
+        $content       = [ 'data' => $data, 'image' => $image, 'menu' => $menu, 'menuInContent' => $menuIncontent ];
 
         return $content;
     }
@@ -163,8 +164,7 @@ class Content extends Model
         return $image;
     }
 
-    public
-    function getMoreContent( $id )
+    public function getMoreContent( $id )
     {
         $data = $this->with( [ 'Author' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
 
@@ -178,8 +178,7 @@ class Content extends Model
      *
      * @return LengthAwarePaginator Home news list for display
      */
-    private
-    function transformContent( $data )
+    private function transformContent( $data )
     {
 
         foreach( $data as $list ){
@@ -197,5 +196,84 @@ class Content extends Model
         }
 
         return $data;
+    }
+
+    private function getMenuInContent($id)
+    {
+        $menuText       = [];
+        $menuFirstText  = [];
+        $menuSecondText = [];
+        $menuThirdText  = [];
+
+        $menuFirst = DB::table( 'menu' )
+                       ->where( [
+                                    'language' => 'EN',
+                                    'sitename' => '5',
+                                    'status'   => 'enable',
+                                ] )
+                       ->whereNull( 'upper_id' )
+                       ->orderBy( 'sort_id', 'asc' )
+                       ->get();
+
+        foreach( $menuFirst as $menuFirstItem ){
+            $id            = $menuFirstItem->id;
+            $sortID        = $menuFirstItem->sort_id;
+            $menuNameFirst = $menuFirstItem->menu_name;
+
+            $menuSecond = DB::table( 'menu' )
+                            ->where( [
+                                         'language' => 'EN',
+                                         'sitename' => '5',
+                                         'status'   => 'enable',
+                                         'upper_id' => $id,
+                                     ] )
+                            ->orderBy( 'sort_id', 'asc' )
+                            ->get();
+
+            foreach( $menuSecond as $menuSecondItem ){
+                $secondID       = $menuSecondItem->id;
+                $secondSortID   = $menuSecondItem->sort_id;
+                $menuNameSecond = $menuSecondItem->menu_name;
+
+                $menuThird = DB::table( 'menu' )
+                               ->where( [
+                                            'language' => 'EN',
+                                            'sitename' => '5',
+                                            'status'   => 'enable',
+                                            'upper_id' => $secondID,
+                                        ] )
+                               ->orderBy( 'sort_id', 'asc' )
+                               ->get();
+
+                foreach( $menuThird as $menuThirdItem ){
+
+                    $thirdID       = $menuThirdItem->id;
+                    $thirdSortID   = $menuThirdItem->sort_id;
+                    $menuNameThird = $menuThirdItem->menu_name;
+
+                    array_push( $menuThirdText, [
+                        'id'       => $thirdID,
+                        'menuName' => $menuNameThird,
+                    ] );
+                }
+
+                array_push( $menuSecondText, [
+                    'id'        => $secondID,
+                    'menuName'  => $menuNameSecond,
+                    'menuThird' => $menuThirdText,
+                ] );
+
+                $menuThirdText = [];
+            }
+
+            array_push( $menuText,
+                        [ 'id'            => $id,
+                          'menuName'      => $menuNameFirst,
+                          'menuSecondary' => $menuSecondText, ] );
+
+            $menuSecondText = [];
+        }
+
+        return $menuText;
     }
 }

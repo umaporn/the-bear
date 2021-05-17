@@ -11,41 +11,42 @@
     transition: opacity .2s;
     margin: 20px;
     padding: 0px;
+    margin-top:24px;
 }
 
 .slider:before {
+    content: "";
     background-color: #212529;
-    height: 8px;
-    left: 0;
+    height: 9px;
     position: absolute;
-    top: -3px;
+    top: 20px;
     width: 1px;
+    left:569px;
 }
 
 .slider:after {
     content: "";
     background-color: #212529;
-    height: 8px;
-    right: 0;
+    height: 9px;
     position: absolute;
-    top: -3px;
+    top: 20px;
     width: 1px;
 }
 
 .text-a:before {
     content: "A";
-    left: 5px;
-    top: 11px;
+    left: 20px;
+    top: 5px;
     font-size: 12px;
-    position: absolute;
+    position: relative;
 }
 
 .text-a-last:before {
     content: "A";
-    left: 100px;
-    top: 8px;
+    left: -20px;
+    top: 5px;
     font-size: 16px;
-    position: absolute;
+    position: relative;
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */

@@ -1,5 +1,5 @@
 <header class="no-js">
-    <div class="container header">
+    <div class="header">
         <div class="row p-2 mobile-middle">
             <div class="col-sm-4 col-6">
                 <a href="#">
@@ -40,7 +40,7 @@
                                                                 </a>
                                                                 @if($secondary['menuThird'])
                                                                     <input type="checkbox" id="drop-3"/>
-                                                                    <ul>
+                                                                    <ul style="right:200px;">
                                                                         @foreach($secondary['menuThird'] as $third)
                                                                             <li><a href="#">
                                                                                     {{ $third['menuName'] }}
@@ -53,20 +53,28 @@
                                                         @endforeach
                                                     </ul>
                                                 @endif
-                                                {{-- <input type="checkbox" id="drop-3"/>
-                                                 <ul>
-                                                     <li><a href="#">HTML/CSS</a></li>
-                                                     <li><a href="#">jQuery</a></li>
-                                                     <li><a href="#">Other</a></li>
-                                                 </ul>--}}
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
                             </ul>
+
                             <span class="text-a"></span>
-                            <input type="range" class="slider" min="1" max="3" step="1" id="customRange3">
+                            <input type="range" class="slider" min="1" max="3" step="1" id="font-range">
                             <span class="text-a-last"></span>
+
+                            <ul class="p-2">
+                            <span class="sun">
+                                <img src="{{ asset('images/sun.svg') }}" class="sun-image">
+                            </span>
+
+                                <label class="switch">
+                                    <input type="checkbox" id="skin-toggle-body">
+                                    <span class="slider-layout round"></span>
+                                </label>
+
+                                <span class="moon"><img src="{{ asset('images/moon.svg') }}" class="moon-image"></span>
+                            </ul>
                         </nav>
                     </div>
 

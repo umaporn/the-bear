@@ -28,4 +28,5 @@ $( document )
         Footer.initialize();
         PasswordToggle.initialize();
         SkinToggle.initialize();
+        Fonts.initialize();
     } );
