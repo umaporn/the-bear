@@ -67,6 +67,13 @@ class Content extends Model
         return $content;
     }
 
+    public function getHeaderMenu()
+    {
+        $menu          = $this->getMenu();
+        $content       = [ 'menu' => $menu  ];
+
+        return $content;
+    }
     private function transformContentDetail( $data )
     {
         $albumName = [];

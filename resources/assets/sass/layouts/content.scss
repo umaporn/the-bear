@@ -214,3 +214,29 @@ a.detail-link {
         width: auto;
     }
 }
+
+.content-desktop{
+    > img{
+        display: block;
+        width: 100%;
+    }
+
+}
+
+.pick-flavor{
+    text-align:center;
+    > img{
+        width:70%;
+        height:60%;
+        text-align:center;
+    }
+    &-text{
+        font-size: 30px;
+        text-align:center;
+        font-family: 'Georgia';
+        font-weight: bold;
+    }
+}
+.bg-gray{
+    background-color: #EAEAEA;
+}

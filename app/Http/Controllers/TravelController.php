@@ -39,7 +39,9 @@ class TravelController extends Controller
      */
     public function index( Request $request )
     {
-        return view( 'travel.index' );
+        $contentDetail = $this->contentModel->getHeaderMenu();
+
+        return view( 'travel.index', compact( 'contentDetail' ) );
     }
 
     /**
@@ -69,11 +71,12 @@ class TravelController extends Controller
     {
 
         foreach( $contentDetail['image'] as $image ){
-            $transformImage = ServiceRequest::call( 'GET',
-                                                    '/assets/' . $image[0]->image,
-                                                    true, );
+            $transformImage  = ServiceRequest::call( 'GET',
+                                                     '/assets/' . $image[0]->image,
+                                                     true, );
             $image->newImage = $transformImage;
         }
+
         return $contentDetail['image'];
     }
 
