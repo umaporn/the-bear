@@ -89,7 +89,7 @@ nav ul {
     margin: 0;
     list-style: none;
     position: relative;
-    z-index:999;
+    z-index: 999;
 }
 
 /* Positioning the navigation items inline */
@@ -98,7 +98,7 @@ nav ul li {
     display: inline-block;
     float: left;
     background: #fafafa;
-    z-index:999;
+    z-index: 999;
 }
 
 /* Styling the links */
@@ -133,8 +133,8 @@ nav ul ul {
     position: fixed;
     /* has to be the same number as the "line-height" of "nav a" */
     //top: 45px;
-    right:10px;
-    z-index:999;
+    right: 10px;
+    z-index: 999;
 }
 
 /* Display Dropdowns on Hover */
@@ -170,7 +170,7 @@ nav ul ul ul {
     top: -50px;
     !* has to be the same number as the "width" of "nav ul ul li" *!
     left: -130px;*/
-    right:50px;
+    right: 50px;
 }
 
 /* Change ' +' in order to change the Dropdown symbol */
@@ -197,6 +197,10 @@ li > a:only-child:after {
         margin: 0;
     }
 
+    nav a {
+        text-align: right;
+    }
+
     /* Hide the navigation menu by default */
     /* Also hide the  */
     .toggle + a,
@@ -207,16 +211,16 @@ li > a:only-child:after {
     /* Stylinf the toggle lable */
     .toggle {
         display: block;
-        background-color: #254441;
-        padding: 14px 20px;
-        color: #FFF;
-        font-size: 14px;
+        //background-color: #254441;
+        padding: 10px;
+        color: #212529;
+        font-size: 12px;
         text-decoration: none;
         border: none;
     }
 
     .toggle:hover {
-        background-color: #000000;
+        //background-color: #000000;
         transition: all 800ms ease;
     }
 
@@ -228,35 +232,48 @@ li > a:only-child:after {
     /* Change menu item's width to 100% */
     nav ul li {
         display: block;
-        width: 100%;
+        width: 300px;
+    }
+
+    nav ul ul {
+       // display: block;
+    }
+
+    /* Fisrt Tier Dropdown */
+    nav ul ul li {
+        width: 170px;
+        float: none;
+        display: list-item;
+        position: relative;
     }
 
     nav ul ul .toggle,
     nav ul ul a {
-        padding: 0 40px;
+        padding: 0 20px;
     }
 
     nav ul ul ul a {
-        padding: 0 80px;
+        padding: 0 40px;
     }
 
     nav a:hover,
     nav ul ul ul a {
-        background-color: #000000;
+        //background-color: #000000;
     }
 
     nav ul li ul li .toggle,
     nav ul ul a,
     nav ul ul ul a {
-        padding: 14px 20px;
-        color: #FFF;
-        font-size: 14px;
+        padding: 5px;
+        color: #212529;
+        font-size: 12px;
     }
 
 
     nav ul li ul li .toggle,
     nav ul ul a {
-        background-color: #212121;
+        padding:5px;
+        //background-color: #212121;
     }
 
     /* Hide Dropdowns by Default */
@@ -270,13 +287,13 @@ li > a:only-child:after {
     /* Hide menus on hover */
     nav ul ul li:hover > ul,
     nav ul li:hover > ul {
-        display: none;
+        //display: none;
     }
 
     /* Fisrt Tier Dropdown */
     nav ul ul li {
         display: block;
-        width: 100%;
+        width: 300px;
     }
 
     nav ul ul ul li {
@@ -291,7 +308,7 @@ li > a:only-child:after {
 
     nav ul li {
         display: block;
-        width: 94%;
+        width: 300px;
     }
 
 }

@@ -40,6 +40,7 @@ const SkinToggle = (function(){
 				$(".moon-image").attr("src","../../images/moon.svg");
 			}
 		});
+
 	}
 
 	return {

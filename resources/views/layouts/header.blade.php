@@ -79,38 +79,66 @@
                     </div>
 
                     <nav class="navbar navbar-expand-xl navbar-light d-md-none float-right">
+                        <span class="text-a"></span>
+                        <input type="range" class="slider" min="1" max="3" step="1" id="font-range-mobile">
+                        <span class="text-a-last"></span>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </nav>
 
                     <nav class="navbar navbar-expand-lg navbar-light d-md-none" style="width:100%">
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                            <ul class="nav navbar-nav mr-auto side-menu " style="height:auto;">
-                                @if($contentDetail['menu'])
-                                    @foreach( $contentDetail['menu'] as $menu )
-                                        <li class="nav-item">
-                                            <a href="">{{ $menu['menuName'] }}</a>
-                                        </li>
-                                    @endforeach
-                                @endif
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="width:100%">
+                            <ul class="nav navbar-nav mr-auto side-menu" style="height:auto;">
+                                @foreach($contentDetail['menu'] as $menu )
+                                    <li>
+                                        <a href="#">
+                                            @if($menu['menuSecondary'])
+                                                <i class="fa fa-sort-down icon-down"></i>
+                                            @endif
+                                            {{ $menu['menuName'] }}
+
+                                        </a>
+                                        @if($menu['menuSecondary'])
+                                            <input type="checkbox" id="drop-3"/>
+                                            <ul>
+                                                @foreach($menu['menuSecondary'] as $secondary)
+                                                    <li><a href="#" style="padding-right:25px;">
+                                                            @if($secondary['menuThird'])
+                                                                <i class="fa fa-sort-down icon-down"></i>
+                                                            @endif
+                                                            {{ $secondary['menuName'] }}
+
+                                                        </a>
+                                                        @if($secondary['menuThird'])
+                                                            <input type="checkbox" id="drop-3"/>
+                                                            <ul style="right:200px;">
+                                                                @foreach($secondary['menuThird'] as $third)
+                                                                    <li><a href="#" style="padding-right:35px;">
+                                                                            {{ $third['menuName'] }}
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
                             </ul>
-
-                            <div class="text-uppercase p-1">
-                                <a href="#">Subscribe</a>
-                            </div>
-
-                            <div class="p-1">
+                            <div class="p-2">
                             <span class="sun">
-                                <img src="{{ asset('images/sun.svg') }}">
+                                <img src="{{ asset('images/sun.svg') }}" class="sun-image">
                             </span>
 
                                 <label class="switch">
-                                    <input type="checkbox" id="skin-toggle-body">
-                                    <span class="slider round"></span>
+                                    <input type="checkbox" id="skin-toggle">
+                                    <span class="slider-layout round"></span>
                                 </label>
 
-                                <span class="moon"><img src="{{ asset('images/moon.svg') }}"></span>
+                                <span class="moon"><img src="{{ asset('images/moon.svg') }}" class="moon-image"></span>
                             </div>
                             <div class="p-1">
                                 <a href="#">

@@ -21,7 +21,7 @@
     position: absolute;
     top: 20px;
     width: 1px;
-    left:569px;
+    left:567px;
 }
 
 .slider:after {
@@ -66,4 +66,40 @@
     background: #57BD37; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
+}
+@media all and (max-width: 768px) {
+
+    .slider {
+        -webkit-appearance: none; /* Override default CSS styles */
+        appearance: none;
+        width: 30%; /* Full-width */
+        height: 1px; /* Specified height */
+        background: #212529; /* Grey background */
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+        margin: 20px;
+        padding: 0px;
+        margin-top:24px;
+    }
+
+    .slider:before {
+        content: "";
+        background-color: #212529;
+        height: 9px;
+        position: absolute;
+        top: 27px;
+        width: 1px;
+        left:569px;
+    }
+
+    .slider:after {
+        content: "";
+        background-color: #212529;
+        height: 0px;
+        position: absolute;
+        top: 27px;
+        width: 1px;
+    }
 }
