@@ -240,3 +240,21 @@ a.detail-link {
 .bg-gray{
     background-color: #EAEAEA;
 }
+
+.img-thumb {
+    height: 200px;
+}
+
+.cover {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.description-box{
+    padding: 10px;
+    background:white;
+    width: 200px;
+}
+.description-text{
+    font-size: 20px;
+}

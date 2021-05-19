@@ -38,26 +38,27 @@
             <div class="container content-detail pt-2">
                 <h2>Latest</h2>
                 <div class="row">
-                    <div class="col-6 col-sm-4 pb-3">
-                        <img src="https://dummyimage.com/200x200/641212/fff">
-                        <div>Title</div>
-                    </div>
-                    <div class="col-6 col-sm-4 pb-3">
-                        <img src="https://dummyimage.com/200x200/641212/fff">
-                        <div>Title</div>
-                    </div>
-                    <div class="col-6 col-sm-4 pb-3">
-                        <img src="https://dummyimage.com/200x200/641212/fff">
-                        <div>Title</div>
-                    </div>
-                    <div class="col-6 col-sm-4 pb-3">
-                        <img src="https://dummyimage.com/200x200/641212/fff">
-                        <div>Title</div>
-                    </div>
-                    <div class="col-6 col-sm-4 pb-3">
-                        <img src="https://dummyimage.com/200x200/641212/fff">
-                        <div>Title</div>
-                    </div>
+                    @foreach($contentList as $list )
+                        <div class="col-6 col-sm-4 pb-3">
+                            @if( isset( $list->new_main_image ) )
+                                <a href="{{ route('travel.detail', ['id' => $list->id, 'slug' => $list->title ]) }}">
+                                    <div class="img-thumb">
+                                        <img src="data:image/png;base64,{{ $list->new_main_image }}"
+                                             alt="{{ $list->title }}" title="{{ $list->title }}" class="cover">
+                                    </div>
+                                </a>
+                            @else
+                                <a href="{{ route('travel.detail', [ 'id' => $list->id, 'slug' => str_replace(' ', '-', $list->title ) ]) }}">
+                                    <img src="https://dummyimage.com/200x200/641212/fff">
+                                </a>
+                            @endif
+                            <div>
+                                <a href="{{ route('travel.detail', [ 'id' => $list->id, 'slug' => str_replace(' ', '-', $list->title ) ]) }}" class="detail-link">
+                                    {{ $list->title }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 

@@ -40,8 +40,28 @@ class TravelController extends Controller
     public function index( Request $request )
     {
         $contentDetail = $this->contentModel->getHeaderMenu();
+        $contentList   = $this->contentModel->getContentList();
 
-        return view( 'travel.index', compact( 'contentDetail' ) );
+        return view( 'travel.index', compact( 'contentDetail', 'contentList' ) );
+    }
+
+    /**
+     * Display travel page.
+     *
+     * @return Factory|View Travel page
+     */
+    public function menu( $menuID, Request $request )
+    {
+        $contentDetail = $this->contentModel->getHeaderMenu();
+        $contentList   = $this->contentModel->getContentMenuList( $menuID, $request );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'travel.menu_list', compact( 'contentList' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'travel.menu', compact( 'contentDetail', 'contentList' ) );
     }
 
     /**

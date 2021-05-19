@@ -50,4 +50,13 @@ return [
         'searchFields'      => [ 'company_name', 'country' ],
         'fulltextSearch'    => false,
     ],
+    'content' => [
+        'limit'             => 6,
+        'limits'            => [ 10, 25, 50, 100 ],
+        'limitForFirstPage' => 6,
+        'sortby'            => 'id',
+        'direction'         => 'asc',
+        'searchFields'      => [ 'title'],
+        'fulltextSearch'    => false,
+    ]
 ];

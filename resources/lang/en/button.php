@@ -18,5 +18,6 @@ return [
     'create'      => 'Create',
     'back'        => 'Back',
     'reset'       => 'Reset',
+    'view_more'   => 'Read More Content',
 
 ];

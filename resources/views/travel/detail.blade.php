@@ -60,7 +60,7 @@
                             <a href="data:image/png;base64,{{ $image->newImage }}"
                                class="gallery-pic" data-fancybox="gallery-units"
                                data-caption="{{ $image[0]->description }}">
-                                <img src="data:image/png;base64,{{ $image->newImage }}"
+                                <img src="data:image/png;base64,{{ $image->newImage }}" class="img-thumb"
                                      alt="{{ $image[0]->alt_tag }}" title="{{ $image[0]->alt_tag }}">
                             </a>
                         </figure>

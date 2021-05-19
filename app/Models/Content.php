@@ -6,6 +6,7 @@
 namespace App\Models;
 
 use App\Libraries\Image;
+use App\Libraries\Search;
 use App\Libraries\ServiceRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -69,11 +70,41 @@ class Content extends Model
 
     public function getHeaderMenu()
     {
-        $menu          = $this->getMenu();
-        $content       = [ 'menu' => $menu  ];
+        $menu    = $this->getMenu();
+        $content = [ 'menu' => $menu ];
 
         return $content;
     }
+
+    public function getContentList()
+    {
+        $data    = $this->orderBy( 'id', 'desc' )->limit( 6 )->get();
+        $newData = $this->transformContent( $data );
+
+        return $newData;
+    }
+
+    public function getContentMenuList( $menuID, Request $request )
+    {
+        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( 'menu', $menuID );
+        $data    = Search::search( $builder, 'content', $request );
+        $newData = $this->transformContent( $data );
+
+        return $newData;
+    }
+
+    private function transformMainImage( $data )
+    {
+        foreach( $data as $list ){
+            $image = ServiceRequest::call(
+                'GET',
+                '/assets/' . $list->main_image,
+                true,
+                );
+        }
+
+    }
+
     private function transformContentDetail( $data )
     {
         $albumName = [];
@@ -93,11 +124,11 @@ class Content extends Model
                                         ] )
                                ->get();
 
-                $imageID = DB::table( 'gallery_image' )
-                             ->where( [
-                                          'gallery_id' => $galleryID[0]->id,
-                                      ] )
-                             ->get();
+                $imageID  = DB::table( 'gallery_image' )
+                              ->where( [
+                                           'gallery_id' => $galleryID[0]->id,
+                                       ] )
+                              ->get();
                 $imageStr = '';
                 foreach( $imageID as $imageItem ){
                     $image_id  = $imageItem->image_id;
@@ -119,9 +150,9 @@ class Content extends Model
             $image    = ServiceRequest::call( 'GET',
                                               '/assets/' . $imageItem->image,
                                               true, );
-            $imageStr .= '<a href="data:image/png;base64,'.$image.'"
+            $imageStr .= '<a href="data:image/png;base64,' . $image . '"
                                class="gallery-pic" data-fancybox="gallery-units"
-                               data-caption="'.$imageItem->description.'"><img src="data:image/png;base64,' . $image . '"
+                               data-caption="' . $imageItem->description . '"><img src="data:image/png;base64,' . $image . '"
                                      alt="' . $imageItem->alt_tag . '" title="' . $imageItem->alt_tag . '"></a>';
 
             $imageStr .= '</figure>';
