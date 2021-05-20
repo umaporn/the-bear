@@ -24,7 +24,7 @@ function globalRoutes()
         Route::get( 'group', 'GroupController@index' )->name( 'group.index' );
         Route::get( 'group/{slug}/{id}', 'GroupController@detail' )->name( 'group.detail' );
 
-        Route::get( 'travel', 'TravelController@index' )->name( 'travel.index' );
+        Route::get( '', 'TravelController@index' )->name( 'travel.index' );
         Route::get( 'travel/category/{menuID}/{slug}', 'TravelController@menu' )->name( 'travel.menu' );
         Route::get( 'travel/{id}/{slug}', 'TravelController@detail' )->name( 'travel.detail' );
         Route::get( 'travel/search', 'TravelController@search' )->name( 'travel.search' );
