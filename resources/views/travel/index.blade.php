@@ -11,7 +11,7 @@
 @section('og-url', __('travel.og_url.index') )
 
 @section('content')
-    <div class="content-desktop">
+    <div class="content-desktop search-box">
         <img src="{{ asset('images/bg-test.jpg') }}">
     </div>
     <div class="container">
@@ -49,7 +49,7 @@
                                 </a>
                             @else
                                 <a href="{{ route('travel.detail', [ 'id' => $list->id, 'slug' => str_replace(' ', '-', $list->title ) ]) }}">
-                                    <img src="https://dummyimage.com/200x200/641212/fff">
+                                    <img src="https://dummyimage.com/400x400/641212/fff" style="width:100%">
                                 </a>
                             @endif
                             <div>
