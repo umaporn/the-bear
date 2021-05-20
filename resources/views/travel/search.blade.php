@@ -18,10 +18,10 @@
             <form id="search-form" class="search-box" method="GET" action="{{ route('travel.search') }}">
                 {{ csrf_field() }}
                 <div class="p-3 row">
-                    <div class="col-8">
+                    <div class="col-8 p-0">
                         <input type="text" class="form-control" name="search" id="search" placeholder="e.g. city, places, hotel…">
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 pl-1">
                         <button class="button-green pointer" type="submit">
                             Search
                         </button>
