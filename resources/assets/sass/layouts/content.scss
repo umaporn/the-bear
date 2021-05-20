@@ -4,6 +4,7 @@
     .header{
         background-color: #152028;
         color: #dee2e6;
+        z-index:5;
     }
     img {
         opacity: 0.5;
@@ -52,6 +53,9 @@
     }
     .slider:before,.slider:after {
         background: #dee2e6;
+    }
+    .description-box{
+        background:#333;
     }
     @media all and (max-width: 768px) {
         .side-menu>li>a{
@@ -253,8 +257,22 @@ a.detail-link {
 .description-box{
     padding: 10px;
     background:white;
-    width: 200px;
 }
 .description-text{
     font-size: 20px;
+}
+
+input.form-control, textarea.form-control {
+    border-radius: 30px;
+}
+
+.search-box{
+    margin-top:70px;
+
+}
+@media screen and (max-width: 750px) {
+    .search-box{
+        margin-top:90px;
+
+    }
 }

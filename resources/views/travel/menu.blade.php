@@ -29,12 +29,18 @@
     <div class="content-desktop">
     </div>
     <div class="container">
-        <div class="container content-detail pt-2" style="margin-top:70px;">
-            <h1>{{ $contentList[0]['Menu']->menu_name }}</h1>
-            <div id="content-list-box">
-                @include('travel.menu_list')
+        <div class="container content-detail search-box pt-2">
 
-            </div>
+            @if($contentList->total() !==  0)
+                <h1>{{ $contentList[0]['Menu']->menu_name }}</h1>
+                <div id="content-list-box">
+                    @include('travel.menu_list')
+
+                </div>
+                @else
+                <h3>Empty Content</h3>
+            @endif
+
         </div>
     </div>
 @endsection

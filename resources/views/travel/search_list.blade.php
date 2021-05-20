@@ -1,5 +1,5 @@
 <div class="row">
-    @forelse($contentList as $list )
+    @foreach($contentList as $list )
         <div class="col-12 col-sm-4 pb-3">
             @if( isset( $list->new_main_image ) )
                 <a href="{{ route('travel.detail', ['id' => $list->id, 'slug' => $list->title ]) }}">
@@ -19,18 +19,16 @@
                 </a>
             </div>
         </div>
-    @empty
-        <div>Empty</div>
-    @endforelse
-    @if(isset($contentList))
-        <div class="col p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() }}">
-            <button type="submit"
-                    class="btn btn-secondary btn-lg btn-block button-green">
-                @lang('button.view_more')
-                <i class="fa fa-caret-down"></i>
-            </button>
-        </div>
+    @endforeach
+</div>
+    @if(count($contentList) <= 6)
+            <div class="p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() . '&search=' . $search }}">
+                <button type="submit"
+                        class="btn btn-secondary btn-lg btn-block button-green">
+                    @lang('button.view_more')
+                    <i class="fa fa-caret-down"></i>
+                </button>
+            </div>
         <img src="{{ asset('images/loader.gif') }}" class="gif-loader" width="50"
              style="display: block; margin-left: auto; margin-right: auto;">
     @endif
-</div>

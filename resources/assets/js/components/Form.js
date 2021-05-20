@@ -69,6 +69,7 @@ const Form = (function(){
 
 		Search.SearchForm.submit( function( event ){
 			event.preventDefault();
+			window.console.log('submit');
 
 			Search.submitForm( $( this ) );
 		} );

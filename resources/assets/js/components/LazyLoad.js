@@ -16,11 +16,9 @@ const LazyLoad = (function(){
 			$( '#loadMore' ).remove();
 			$( document )
 				.ajaxStart( function(){
-					window.console.log('start');
 					$('.gif-loader').show();
 				} )
 				.ajaxStop( function(){
-					window.console.log('stop');
 					$('.gif-loader').hide();
 				} );
 			$.ajax( {

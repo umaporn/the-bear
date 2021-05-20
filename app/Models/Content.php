@@ -93,6 +93,15 @@ class Content extends Model
         return $newData;
     }
 
+    public function getContentSearchList( Request $request )
+    {
+        $builder = $this->orderBy( 'id', 'desc' );
+        $data    = Search::search( $builder, 'content', $request );
+        $newData = $this->transformContent( $data );
+
+        return $newData;
+    }
+
     private function transformMainImage( $data )
     {
         foreach( $data as $list ){

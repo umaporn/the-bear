@@ -1,12 +1,12 @@
 <header class="no-js">
     <div class="header">
         <div class="row p-2 mobile-middle">
-            <div class="col-sm-4 col-6">
-                <a href="#">
+            <div class="col-sm-4 col-4">
+                <a href="{{ route('travel.index') }}">
                     <img class="logo" src="{{ asset('images/logo/tbt-travel.png') }}">
                 </a>
             </div>
-            <div class="col-sm-8 col-6" style="margin-top: auto;margin-bottom: auto; text-align:right">
+            <div class="col-sm-8 col-8" style="margin-top: auto;margin-bottom: auto; text-align:right">
                 <div class="align-middle header-bar">
                     <div class="d-none d-sm-none d-md-block">
 
@@ -23,7 +23,7 @@
                                     <ul>
                                         @foreach($contentDetail['menu'] as $menu )
                                             <li>
-                                                <a href="#">{{ $menu['menuName'] }}
+                                                <a href="{{ route('travel.menu', ['menuID' => $menu['id'] , 'slug' => str_replace(' ', '-', $menu['menuName']) ]) }}">{{ $menu['menuName'] }}
                                                     @if($menu['menuSecondary'])
                                                         <i class="fa fa-sort-down icon-down"></i>
                                                     @endif
@@ -32,7 +32,7 @@
                                                     <input type="checkbox" id="drop-3"/>
                                                     <ul>
                                                         @foreach($menu['menuSecondary'] as $secondary)
-                                                            <li><a href="#">
+                                                            <li><a href="{{ route('travel.menu', ['menuID' => $secondary['id'] , 'slug' => str_replace(' ', '-', $secondary['menuName']) ]) }}">
                                                                     {{ $secondary['menuName'] }}
                                                                     @if($secondary['menuThird'])
                                                                         <i class="fa fa-sort-down icon-down"></i>
@@ -42,7 +42,7 @@
                                                                     <input type="checkbox" id="drop-3"/>
                                                                     <ul style="right:200px;">
                                                                         @foreach($secondary['menuThird'] as $third)
-                                                                            <li><a href="#">
+                                                                            <li><a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}">
                                                                                     {{ $third['menuName'] }}
                                                                                 </a>
                                                                             </li>
@@ -58,7 +58,13 @@
                                     </ul>
                                 </li>
                             </ul>
-
+                            <ul>
+                                <a href="{{ route('travel.search') }}">
+                                    <label class="search">
+                                        <i class="fa fa-search"></i> Search
+                                    </label>
+                                </a>
+                            </ul>
                             <span class="text-a"></span>
                             <input type="range" class="slider" min="1" max="3" step="1" id="font-range">
                             <span class="text-a-last"></span>
@@ -92,7 +98,7 @@
                             <ul class="nav navbar-nav mr-auto side-menu" style="height:auto;">
                                 @foreach($contentDetail['menu'] as $menu )
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('travel.menu', ['menuID' => $menu['id'] , 'slug' => str_replace(' ', '-', $menu['menuName']) ]) }}">
                                             @if($menu['menuSecondary'])
                                                 <i class="fa fa-sort-down icon-down"></i>
                                             @endif
@@ -103,7 +109,7 @@
                                             <input type="checkbox" id="drop-3"/>
                                             <ul>
                                                 @foreach($menu['menuSecondary'] as $secondary)
-                                                    <li><a href="#" style="padding-right:25px;">
+                                                    <li><a href="{{ route('travel.menu', ['menuID' => $secondary['id'] , 'slug' => str_replace(' ', '-', $secondary['menuName']) ]) }}" style="padding-right:25px;">
                                                             @if($secondary['menuThird'])
                                                                 <i class="fa fa-sort-down icon-down"></i>
                                                             @endif
@@ -114,7 +120,7 @@
                                                             <input type="checkbox" id="drop-3"/>
                                                             <ul style="right:200px;">
                                                                 @foreach($secondary['menuThird'] as $third)
-                                                                    <li><a href="#" style="padding-right:35px;">
+                                                                    <li><a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}" style="padding-right:35px;">
                                                                             {{ $third['menuName'] }}
                                                                         </a>
                                                                     </li>
@@ -141,7 +147,7 @@
                                 <span class="moon"><img src="{{ asset('images/moon.svg') }}" class="moon-image"></span>
                             </div>
                             <div class="p-1">
-                                <a href="#">
+                                <a href="{{ route('travel.search') }}">
                                     <label class="search">
                                         <i class="fa fa-search"></i> Search
                                     </label>

@@ -104,4 +104,20 @@ class TravelController extends Controller
     {
         return $this->contentModel->getMoreContent( $id );
     }
+
+    public function search( Request $request )
+    {
+        $contentDetail = $this->contentModel->getHeaderMenu();
+        $contentList   = $this->contentModel->getContentSearchList($request);
+        $search = $request->input('search');
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'travel.search_list', compact( 'contentList', 'search' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'travel.search', compact( 'contentDetail', 'contentList', 'search' ) );
+
+    }
 }
