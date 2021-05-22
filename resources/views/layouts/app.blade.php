@@ -23,10 +23,10 @@
         ]) !!};
     </script>
     <script type="text/javascript" src="https://unpkg.com/@passbase/button@v3/button.js"></script>
-
+    {!! $gtmHeaderTags[0]->header_code !!}
 </head>
 <body>
-
+{!! $gtmBodyTags[0]->body_code !!}
 @include('layouts.header')
 @include('layouts.content')
 @include('layouts.footer')

@@ -12,6 +12,7 @@ use App\Libraries\WebServiceRequest\PasswordGrantRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Sitename;
 
 /**
  * Application Service Provider
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer( 'layouts.app', 'App\ViewComposers\MenuComposer' );
         View::composer( 'layouts.menu', 'App\ViewComposers\MenuComposer' );
+
+        View::composer( 'layouts.app', 'App\ViewComposers\GtmHeaderComposer' );
+        View::composer( 'layouts.app', 'App\ViewComposers\GtmBodyComposer' );
 
         Validator::extend( 'correct_password', 'App\Libraries\ValidationRules\Common@validatePassword' );
         Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules\Common@validateZeroOrExistsRule' );
