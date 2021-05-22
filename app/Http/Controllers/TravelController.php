@@ -11,6 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Content;
+use App\Models\WebStory;
 use Illuminate\Support\Arr;
 
 /**
@@ -21,15 +22,17 @@ class TravelController extends Controller
 {
     /** @var Content Content model */
     protected $contentModel;
+    protected $webStoryModel;
 
     /**
      * Initialize ContentController class.
      *
      * @param Content $content Users model
      */
-    public function __construct( Content $content )
+    public function __construct( Content $content, WebStory $webStory )
     {
-        $this->contentModel = $content;
+        $this->contentModel  = $content;
+        $this->webStoryModel = $webStory;
     }
 
     /**
@@ -39,10 +42,11 @@ class TravelController extends Controller
      */
     public function index( Request $request )
     {
+        $webStory      = $this->webStoryModel->getWebStory();
         $contentDetail = $this->contentModel->getHeaderMenu();
         $contentList   = $this->contentModel->getContentList();
 
-        return view( 'travel.index', compact( 'contentDetail', 'contentList' ) );
+        return view( 'travel.index', compact( 'contentDetail', 'contentList', 'webStory' ) );
     }
 
     /**
@@ -108,8 +112,8 @@ class TravelController extends Controller
     public function search( Request $request )
     {
         $contentDetail = $this->contentModel->getHeaderMenu();
-        $contentList   = $this->contentModel->getContentSearchList($request);
-        $search = $request->input('search');
+        $contentList   = $this->contentModel->getContentSearchList( $request );
+        $search        = $request->input( 'search' );
 
         if( $request->ajax() ){
             return response()->json( [

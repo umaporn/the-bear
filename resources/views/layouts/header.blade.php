@@ -9,7 +9,6 @@
             <div class="col-sm-8 col-8" style="margin-top: auto;margin-bottom: auto; text-align:right">
                 <div class="align-middle header-bar">
                     <div class="d-none d-sm-none d-md-block">
-
                         <nav>
                             <label for="drop" class="toggle">Menu</label>
                             <ul class="menu">
