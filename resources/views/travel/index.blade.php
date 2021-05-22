@@ -52,7 +52,7 @@
                                     <img src="https://dummyimage.com/400x400/641212/fff" style="width:100%">
                                 </a>
                             @endif
-                            <div>
+                            <div  class="description-box">
                                 <a href="{{ route('travel.detail', [ 'id' => $list->id, 'slug' => str_replace(' ', '-', $list->title ) ]) }}" class="detail-link">
                                     {{ $list->title }}
                                 </a>
