@@ -24,69 +24,14 @@
                         </label>
                         <span class="moon"><img src="{{ asset('images/moon.svg') }}" class="moon-image" width="17" style="margin-top: 5px;"></span>
                     </div>
-                    {{--<div class="col" style="top:9px">
-                        <a href="{{ route('travel.search') }}">
-                            <label class="search">
-                                <i class="fa fa-search"></i> Search
-                            </label>
-                        </a>
-                    </div>--}}
 
                 </div>
                 <div class="col-sm-2 col-2" style="margin-top: auto;margin-bottom: auto; float:right;padding:0;">
                     <div class="align-middle header-bar" style="text-align:right;padding:0;">
                         <div class="d-none d-sm-none d-md-block">
                             <nav>
-                                <a href="#" style="font-size:20px">MENU
+                                <a href="#" style="font-size:20px" class="parent">MENU
                                     <i class="fa fa-sort-down icon-down" style="vertical-align:top;"></i></a>
-                                {{--<ul class="menu">
-                                    <li>
-                                        <label for="drop-2" class="toggle">Menu
-                                            <i class="fas fa-sort-down"></i>
-                                        </label>
-                                        <a href="#" style="font-size:20px">MENU
-                                            <i class="fa fa-sort-down icon-down"></i></a>
-                                        <input type="checkbox" id="drop-2"/>
-                                        <ul>
-                                            @foreach($contentDetail['menu'] as $menu )
-                                                <li>
-                                                    <a href="{{ route('travel.menu', ['menuID' => $menu['id'] , 'slug' => str_replace(' ', '-', $menu['menuName']) ]) }}">{{ $menu['menuName'] }}
-                                                        @if($menu['menuSecondary'])
-                                                            <i class="fa fa-sort-down icon-down"></i>
-                                                        @endif
-                                                    </a>
-                                                    @if($menu['menuSecondary'])
-                                                        <input type="checkbox" id="drop-3"/>
-                                                        <ul>
-                                                            @foreach($menu['menuSecondary'] as $secondary)
-                                                                <li>
-                                                                    <a href="{{ route('travel.menu', ['menuID' => $secondary['id'] , 'slug' => str_replace(' ', '-', $secondary['menuName']) ]) }}">
-                                                                        {{ $secondary['menuName'] }}
-                                                                        @if($secondary['menuThird'])
-                                                                            <i class="fa fa-sort-down icon-down"></i>
-                                                                        @endif
-                                                                    </a>
-                                                                    @if($secondary['menuThird'])
-                                                                        <input type="checkbox" id="drop-3"/>
-                                                                        <ul style="right:200px;">
-                                                                            @foreach($secondary['menuThird'] as $third)
-                                                                                <li>
-                                                                                    <a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}">
-                                                                                        {{ $third['menuName'] }}
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    @endif
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                </ul>--}}
                             </nav>
                         </div>
                         {{--<nav class="navbar navbar-expand-xl navbar-light d-md-none float-right">
@@ -191,11 +136,11 @@
                                     @if($secondary['menuThird'])
                                         <ul>
                                             @foreach($secondary['menuThird'] as $third)
-                                            <li>
-                                                <a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}">
-                                                    {{ $third['menuName'] }}
-                                                </a>
-                                            </li>
+                                                <li>
+                                                    <a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}">
+                                                        {{ $third['menuName'] }}
+                                                    </a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     @endif

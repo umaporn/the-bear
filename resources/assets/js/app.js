@@ -21,3 +21,4 @@ require( 'popper.js' );
 require( 'bootstrap/dist/js/bootstrap.js' );
 require( 'croppie/croppie' );
 require( '@fancyapps/fancybox' );
+require( 'jquery.transit' );

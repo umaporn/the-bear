@@ -28,6 +28,7 @@
     "jquery-autocomplete": "^1.2.8",
     "jquery-lazy": "^1.7.11",
     "jquery-ui": "^1.12.1",
+    "jquery.transit": "^0.9.12",
     "mysql": "^2.18.1",
     "npm": "^6.14.8",
     "oreid-js": "^2.8.0",
