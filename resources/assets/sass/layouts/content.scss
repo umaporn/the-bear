@@ -2,14 +2,19 @@
     background-color: #152028;
     color: #dee2e6;
 
+    h1,h2{
+        color: #dee2e6;
+    }
+
+    .bg-gray{
+        background-color: #212529;
+        color: #dee2e6;
+    }
+
     .header {
         background-color: #152028;
         color: #dee2e6;
-        z-index: 5;
-    }
-
-    img {
-        opacity: 0.5;
+        z-index: 15;
     }
 
     i, button {
@@ -53,14 +58,6 @@
         color: lighter(#dee2e6, 10%);
     }
 
-    .slider {
-        background: #dee2e6;
-    }
-
-    .slider:before, .slider:after {
-        background: #dee2e6;
-    }
-
     .description-box {
         background: #333;
     }
@@ -94,15 +91,23 @@ body {
 }
 
 .content-detail {
-    max-width: 660px;
+    max-width: 1200px;
 }
 
+.content-detail-660 {
+    max-width: 660px;
+}
 @media screen and (max-width: 660px) {
     .content-detail {
         font-size: 14px;
         padding: 0px 10px;
         max-width: 660px;
     }
+
+    .content-detail-660 {
+        max-width: 660px;
+    }
+
     .container, .container-sm {
         max-width: 660px;
     }
@@ -236,6 +241,7 @@ a.detail-link {
 }
 
 .pick-flavor {
+    cursor: pointer;
     text-align: center;
 
     > img {
@@ -280,7 +286,9 @@ input.form-control, textarea.form-control {
 }
 
 .search-box {
-    margin-top: 70px;
+
+    width:50%;
+    margin: 0 auto;
 
 }
 
@@ -321,9 +329,12 @@ input.form-control, textarea.form-control {
         font-size: 30px;
     }
 }
-
+.carousel-caption {
+    bottom: 340px;
+}
 @media screen and (max-width: 750px) {
     .carousel-caption {
+        bottom: 140px;
         .detail-link{
             font-size: 20px;
         }

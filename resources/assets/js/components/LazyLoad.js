@@ -9,7 +9,9 @@ const LazyLoad = (function(){
 	 * @desc Initialize LazyLoad module.
 	 */
 	function initialize(){
+
 		$('.gif-loader').hide();
+
 		$( document ).on( 'click', '#loadMore', function(){
 			var url = $( '#loadMore' ).data( 'url' );
 

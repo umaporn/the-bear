@@ -31,7 +31,7 @@
         <div>
             <img src="data:image/png;base64,{{ $mainImage }}" class="w-100" alt="">
         </div>
-        <div class="container content-detail search-box pt-2">
+        <div class="container content-detail-660 search-box pt-2">
             {{--<div class="lead">
                 @if($contentDetail['menuInContent'])
                     @foreach( $contentDetail['menuInContent'] as $menu )

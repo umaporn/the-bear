@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer( 'layouts.app', 'App\ViewComposers\GtmHeaderComposer' );
         View::composer( 'layouts.app', 'App\ViewComposers\GtmBodyComposer' );
 
+        View::composer( 'layouts.footer', 'App\ViewComposers\SocialButtonComposer' );
+        View::composer( 'layouts.footer', 'App\ViewComposers\FooterMenuComposer' );
+
         Validator::extend( 'correct_password', 'App\Libraries\ValidationRules\Common@validatePassword' );
         Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules\Common@validateZeroOrExistsRule' );
         Validator::extend( 'checkbox_in', 'App\Libraries\ValidationRules\Common@validateCheckboxInRule' );

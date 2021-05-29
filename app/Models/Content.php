@@ -78,7 +78,7 @@ class Content extends Model
 
     public function getContentList()
     {
-        $data    = $this->orderBy( 'id', 'desc' )->limit( 6 )->get();
+        $data    = $this->where('sitename','5')->orderBy( 'id', 'desc' )->limit( 6 )->get();
         $newData = $this->transformContent( $data );
 
         return $newData;
@@ -86,7 +86,7 @@ class Content extends Model
 
     public function getContentMenuList( $menuID, Request $request )
     {
-        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( 'menu', $menuID );
+        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( [ 'menu' => $menuID, 'sitename' => '5' ] );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 
@@ -95,7 +95,7 @@ class Content extends Model
 
     public function getContentSearchList( Request $request )
     {
-        $builder = $this->orderBy( 'id', 'desc' );
+        $builder = $this->where('sitename','5')->orderBy( 'id', 'desc' );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 

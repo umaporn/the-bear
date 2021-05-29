@@ -2,26 +2,30 @@
 .slider {
     -webkit-appearance: none; /* Override default CSS styles */
     appearance: none;
-    width: 10%; /* Full-width */
-    height: 1px; /* Specified height */
-    background: #212529; /* Grey background */
+    width: 25%; /* Full-width */
+    //height: 1px; /* Specified height */
+    //background: #212529; /* Grey background */
     outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
     margin: 20px;
     padding: 0px;
-    margin-top:24px;
+    margin-top:26px;
+    background-image: url('/images/slider-text.png');
+    background-repeat: no-repeat;
+    background-size: 77px 6px;
+    background-color: transparent;
 }
-
+/*
 .slider:before {
     content: "";
     background-color: #212529;
     height: 9px;
     position: absolute;
-    top: 20px;
+    top: 26px;
     width: 1px;
-    left:466px;
+    left:224px;
 }
 
 .slider:after {
@@ -29,22 +33,23 @@
     background-color: #212529;
     height: 9px;
     position: absolute;
-    top: 20px;
+    top: 26px;
     width: 1px;
-}
+}*/
 
 .text-a:before {
     content: "A";
     left: 20px;
-    top: 5px;
+    top: -5px;
     font-size: 12px;
+    margin-left: -1px;
     position: relative;
 }
 
 .text-a-last:before {
     content: "A";
     left: -20px;
-    top: 5px;
+    top: -5px;
     font-size: 16px;
     position: relative;
 }
@@ -53,19 +58,21 @@
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
+    width: 17px; /* Set a specific slider handle width */
+    height: 17px; /* Slider handle height */
     background: #57BD37; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
+    margin-top: -5px;
 }
 
 .slider::-moz-range-thumb {
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
+    width: 17px; /* Set a specific slider handle width */
+    height: 17x; /* Slider handle height */
     background: #57BD37; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
+    margin-top: -5px;
 }
 @media all and (max-width: 768px) {
 

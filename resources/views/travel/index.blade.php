@@ -12,7 +12,7 @@
 
 @section('content')
 
-    <div class="content-desktop search-box">
+    <div class="content-desktop">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 @for($i=0; $i < count($webStory); $i++)
@@ -39,19 +39,19 @@
             </a>
         </div>
     </div>
-    <div class="container">
+    <div>
         <div class="container content-detail pt-2">
             <h1 class="text-center">Pick your flavor</h1>
             <div class="row">
-                <div class="col-12 col-sm-4 pick-flavor">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'explore' ]) }}">
                     <img src="{{ asset('images/explore.svg') }}">
                     <div class="pick-flavor-text">Explore</div>
                 </div>
-                <div class="col-12 col-sm-4 pick-flavor">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'ride' ]) }}">
                     <img src="{{ asset('images/ride.svg') }}">
                     <div class="pick-flavor-text">Ride</div>
                 </div>
-                <div class="col-12 col-sm-4 pick-flavor">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'eat' ]) }}">
                     <img src="{{ asset('images/eat.svg') }}">
                     <div class="pick-flavor-text">Eat</div>
                 </div>

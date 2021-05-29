@@ -1,6 +1,6 @@
-<div class="container row pt-3">
+<div class="row mt-3">
     <h5>More From The Bear Travel</h5>
-    <div class="container more-form-box">
+    <div class="more-form-box">
         @foreach($moreContent as $moreItem)
             @if( ( $loop->index % 3  ) === 0   )
                 <div class="row align-items-start">

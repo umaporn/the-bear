@@ -28,16 +28,15 @@
 @section('content')
     <div class="content-desktop">
     </div>
-    <div class="container">
-        <div class="container content-detail search-box pt-2">
-
+    <div>
+        <div class="container content-detail" style="margin-top:70px;">
             @if($contentList->total() !==  0)
                 <h1>{{ $contentList[0]['Menu']->menu_name }}</h1>
                 <div id="content-list-box">
                     @include('travel.menu_list')
 
                 </div>
-                @else
+            @else
                 <h3>Empty Content</h3>
             @endif
 

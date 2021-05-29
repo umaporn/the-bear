@@ -24,6 +24,10 @@
     </script>
     <script type="text/javascript" src="https://unpkg.com/@passbase/button@v3/button.js"></script>
     {!! $gtmHeaderTags[0]->header_code !!}
+
+    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/all.js') }}"></script>
+
 </head>
 <body>
 {!! $gtmBodyTags[0]->body_code !!}
@@ -33,9 +37,6 @@
 
 @include('message_boxes.result')
 @include('message_boxes.confirmation')
-
-<script src="{{ mix('/js/app.js') }}"></script>
-<script src="{{ mix('/js/all.js') }}"></script>
 
 </body>
 </html>

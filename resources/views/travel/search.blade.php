@@ -13,8 +13,8 @@
 @section('content')
     <div class="content-desktop">
     </div>
-    <div class="container">
-        <div class="container content-detail pt-2 ">
+    <div>
+        <div class="container content-detail pt-2" style="margin-top:70px;">
             <form id="search-form" class="search-box" method="GET" action="{{ route('travel.search') }}">
                 {{ csrf_field() }}
                 <div class="p-3 row">
