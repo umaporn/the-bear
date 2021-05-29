@@ -1,6 +1,6 @@
 <header class="no-js">
     <div class="header">
-        <div class="mobile-middle header-menu">
+        <div class="mobile-middle header-menu d-none d-sm-none d-md-block">
             <div class="row">
                 <div class="col-sm-3 col-3">
                     <a href="{{ route('travel.index') }}">
@@ -34,84 +34,28 @@
                                     <i class="fa fa-sort-down icon-down" style="vertical-align:top;"></i></a>
                             </nav>
                         </div>
-                        {{--<nav class="navbar navbar-expand-xl navbar-light d-md-none float-right">
-                            <span class="text-a"></span>
-                            <input type="range" class="slider" min="1" max="3" step="1" id="font-range-mobile">
-                            <span class="text-a-last"></span>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </nav>--}}
-
-                        {{-- <nav class="navbar navbar-expand-lg navbar-light d-md-none" style="width:100%">
-                             <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="width:100%">
-                                 <ul class="nav navbar-nav mr-auto side-menu" style="height:auto;">
-                                     @foreach($contentDetail['menu'] as $menu )
-                                         <li>
-                                             <a href="{{ route('travel.menu', ['menuID' => $menu['id'] , 'slug' => str_replace(' ', '-', $menu['menuName']) ]) }}">
-                                                 @if($menu['menuSecondary'])
-                                                     <i class="fa fa-sort-down icon-down"></i>
-                                                 @endif
-                                                 {{ $menu['menuName'] }}
-
-                                             </a>
-                                             @if($menu['menuSecondary'])
-                                                 <input type="checkbox" id="drop-3"/>
-                                                 <ul>
-                                                     @foreach($menu['menuSecondary'] as $secondary)
-                                                         <li>
-                                                             <a href="{{ route('travel.menu', ['menuID' => $secondary['id'] , 'slug' => str_replace(' ', '-', $secondary['menuName']) ]) }}" style="padding-right:25px;">
-                                                                 @if($secondary['menuThird'])
-                                                                     <i class="fa fa-sort-down icon-down"></i>
-                                                                 @endif
-                                                                 {{ $secondary['menuName'] }}
-
-                                                             </a>
-                                                             @if($secondary['menuThird'])
-                                                                 <input type="checkbox" id="drop-3"/>
-                                                                 <ul style="right:200px;">
-                                                                     @foreach($secondary['menuThird'] as $third)
-                                                                         <li>
-                                                                             <a href="{{ route('travel.menu', ['menuID' => $third['id'] , 'slug' => str_replace(' ', '-', $third['menuName']) ]) }}" style="padding-right:35px;">
-                                                                                 {{ $third['menuName'] }}
-                                                                             </a>
-                                                                         </li>
-                                                                     @endforeach
-                                                                 </ul>
-                                                             @endif
-                                                         </li>
-                                                     @endforeach
-                                                 </ul>
-                                             @endif
-                                         </li>
-                                     @endforeach
-                                 </ul>
-                                 <div class="p-2">
-                             <span class="sun">
-                                 <img src="{{ asset('images/sun.svg') }}" class="sun-image">
-                             </span>
-
-                                     <label class="switch">
-                                         <input type="checkbox" id="skin-toggle">
-                                         <span class="slider-layout round"></span>
-                                     </label>
-
-                                     <span class="moon"><img src="{{ asset('images/moon.svg') }}" class="moon-image"></span>
-                                 </div>
-                                 <div class="p-1">
-                                     <a href="{{ route('travel.search') }}">
-                                         <label class="search">
-                                             <i class="fa fa-search"></i> Search
-                                         </label>
-                                     </a>
-                                 </div>
-
-                             </div>
-                         </nav>--}}
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="mobile-middle d-md-none">
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('travel.index') }}">
+                        <img style="margin:0;" class="logo p-2 float-left" src="{{ asset('images/logo/tbt-travel.png') }}">
+                    </a>
+                </div>
+                <div class="col">
+                    <nav class="pt-2 navbar navbar-expand-xl navbar-light d-md-none float-right" style="text-align:right;">
+                        <button class="navbar-toggler float-right parent" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="dropdown">
         <ul>
