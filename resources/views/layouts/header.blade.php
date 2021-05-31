@@ -142,7 +142,7 @@
                                     <a href="{{ route('travel.menu', ['menuID' => $secondary['id'] , 'slug' => str_replace(' ', '-', $secondary['menuName']) ]) }}">
                                         {{ $secondary['menuName'] }}
                                         @if($secondary['menuThird'])
-                                            <i class="fa fa-sort-down icon-down float-right"></i>
+                                            <i class="fa fa-caret-right float-right"></i>
                                         @endif
                                     </a>
                                     @if($secondary['menuThird'])

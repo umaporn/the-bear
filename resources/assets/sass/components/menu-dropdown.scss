@@ -88,7 +88,9 @@ nav a {
 }
 
 .dropdown li ul {
-    position: relative;
+    position: absolute;
+    left: 100%;
+    margin: 0;
     list-style: none;
     display: none;
     line-height: normal;
@@ -97,11 +99,7 @@ nav a {
     padding-left: 40px;
     width: 100%;
     top: 0;
-    flex-direction: column;
-    order: 1;
-    margin: 0 20px;
-    overflow-y: scroll;
-    height: calc(100vh - 70px);
+
 
     &:hover {
         color: #434343;
