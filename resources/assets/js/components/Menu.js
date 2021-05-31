@@ -14,15 +14,30 @@ const Menu = (function(){
 			if( $( '.dropdown' ).is( ':visible' ) ){
 				$( '.dropdown' ).hide();
 			}else{
-				$( '.dropdown' ).show();
-				$( '.dropdown' ).transition( {
+
+				$( '.dropdown' ).css('display', 'block');
+				// $( 'body .dropdown' ).transition( {
+				// 	                             y:        '0px',
+				// 	                             duration: 500,
+				//                              } );
+
+			}
+		} );
+		$( '.parent-mobile' ).click( function(){
+
+			if( $( '.dropdown-mobile' ).is( ':visible' ) ){
+				$( '.dropdown-mobile' ).hide();
+			}else{
+
+				$( '.dropdown-mobile' ).css('display', 'block');
+				/*$( '.dropdown-mobile' ).transition( {
 					                             y:        '0px',
 					                             duration: 500,
 					                             easing:   'in',
-				                             } );
+				                             } );*/
+
 			}
 		} );
-
 	}
 
 	return {
