@@ -19,7 +19,7 @@ const Fonts = (function(){
 			//rest of code here to set the font size based on fontSize value
 		});
 
-		$( '#font-range' ).on( 'input', function(){
+		$( 'body #font-range' ).on( 'input', function(){
 			localStorage.removeItem("fontRange");
 			localStorage.setItem("fontRange", $(this).val());
 	  	    if($(this).val()==1){
@@ -42,7 +42,7 @@ const Fonts = (function(){
 			}
 		} );
 
-		$( '#font-range-mobile' ).on( 'input', function(){
+		$( 'body #font-range-mobile' ).on( 'input', function(){
 			if($(this).val()==1){
 				$( 'p' ).css( 'font-size', '16px' );
 				$( 'a' ).css( 'font-size', '16px' );

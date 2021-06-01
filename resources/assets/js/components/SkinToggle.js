@@ -53,7 +53,7 @@ const SkinToggle = (function(){
 			}
 		});
 
-		$("#skin-toggle-body").click(function() {
+		$("body #skin-toggle-body").click(function() {
 			if($(this).prop("checked") == true){
 				$('body').addClass('dark-mode');
 				$(".sun-image").attr("src","/../images/day.svg");

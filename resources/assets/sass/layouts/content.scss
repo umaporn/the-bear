@@ -78,10 +78,10 @@
             color: lighter(#dee2e6, 10%);
         }
         .slider {
-            background: #dee2e6;
+            background-color: transparent;
         }
         .slider:before, .slider:after {
-            background: #dee2e6;
+            background-color: transparent;
         }
     }
 }
