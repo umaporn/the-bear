@@ -20,7 +20,7 @@
             </div>
         </div>
     @empty
-        <div>Empty</div>
+        <div class="col pb-3"> <p>No Content</p> </div>
     @endforelse
     @if($contentList->nextPageUrl())
         <div class="col p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() }}" style="padding-bottom:100px !important">

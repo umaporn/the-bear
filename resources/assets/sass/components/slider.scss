@@ -79,7 +79,7 @@
     .slider {
         -webkit-appearance: none; /* Override default CSS styles */
         appearance: none;
-        width: 25%; /* Full-width */
+        width: 24%; /* Full-width */
         //height: 1px; /* Specified height */
         //background: #212529; /* Grey background */
         outline: none; /* Remove outline */
@@ -89,11 +89,13 @@
         padding: 0px;
         background-image: url('/images/slider-text.png');
         background-repeat: no-repeat;
-        background-size: 93px 6px;
+        background-size: 85px 6px;
         background-color: transparent;
         margin-top:10px;
         margin-bottom:10px;
         margin-left:-20px;
+        -moz-background-color: transparent;
+        -webkit-background-color:transparent;
     }
 
     .text-a:before {

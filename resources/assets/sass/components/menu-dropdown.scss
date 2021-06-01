@@ -29,7 +29,7 @@ nav a {
     position: fixed;
     transform: translateY(-2em);
     transition: all 800ms ease;
-    height: 400px;
+    height: 430px;
 
 }
 
@@ -180,7 +180,11 @@ ul li:hover > ul {
         width: 0;
         font-size: 16px;
     }
-
+    @media all and (max-width: 420px) {
+        li > form > button > #filtersubmit {
+            left: 285px;
+        }
+    }
 
     /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
     li > slider::-webkit-slider-thumb {
