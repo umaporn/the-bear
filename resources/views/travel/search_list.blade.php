@@ -21,7 +21,7 @@
         </div>
     @endforeach
 </div>
-    @if(count($contentList) <= 6 && count($contentList) != 0)
+    @if($contentList->nextPageUrl())
             <div class="p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() . '&search=' . $search }}">
                 <button type="submit"
                         class="btn btn-secondary btn-lg btn-block button-green">

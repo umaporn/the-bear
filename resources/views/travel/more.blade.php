@@ -18,7 +18,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="padding:0px">
                                     @if($moreItem->new_main_image)
                                         <img src="data:image/png;base64,{{ $moreItem->new_main_image }}" class="w-100">
                                     @else

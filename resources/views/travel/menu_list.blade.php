@@ -22,8 +22,8 @@
     @empty
         <div>Empty</div>
     @endforelse
-    @if(isset($contentList))
-        <div class="col p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() }}">
+    @if($contentList->nextPageUrl())
+        <div class="col p-3" id="loadMore" data-url="{{ $contentList->nextPageUrl() }}" style="padding-bottom:100px !important">
             <button type="submit"
                     class="btn btn-secondary btn-lg btn-block button-green">
                 @lang('button.view_more')

@@ -32,7 +32,6 @@ const SkinToggle = (function(){
 		});
 
 		$("#skin-toggle").click(function() {
-			window.console.log('desktop toggle');
 			if($(this).prop("checked") == true){
 				$('body').addClass('dark-mode');
 				$(".sun-image").attr("src","/../images/day.svg");
@@ -54,7 +53,6 @@ const SkinToggle = (function(){
 		});
 
 		$("#skin-toggle-body").click(function() {
-			window.console.log('mobile toggle');
 			if($(this).prop("checked") == true){
 				$('body').addClass('dark-mode');
 				$(".sun-image").attr("src","/../images/day.svg");

@@ -20,7 +20,6 @@ const Fonts = (function(){
 		});
 
 		$( '#font-range' ).on( 'input', function(){
-	  	    window.console.log($(this).val());
 			localStorage.removeItem("fontRange");
 			localStorage.setItem("fontRange", $(this).val());
 	  	    if($(this).val()==1){
@@ -44,7 +43,6 @@ const Fonts = (function(){
 		} );
 
 		$( '#font-range-mobile' ).on( 'input', function(){
-			window.console.log($(this).val());
 			if($(this).val()==1){
 				$( 'p' ).css( 'font-size', '16px' );
 				$( 'a' ).css( 'font-size', '16px' );
