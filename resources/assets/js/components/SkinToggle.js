@@ -12,7 +12,8 @@ const SkinToggle = (function(){
 
 		$(document).ready(function() {
 			var skin = localStorage.getItem("skin");
-			if(skin === 'light-mode'){
+			window.console.log(skin);
+			if(skin === 'light-mode' || skin === null){
 				$( "#skin-toggle" ).prop( "checked", false );
 				$( "#skin-toggle-body" ).prop( "checked", false );
 				$('body').removeClass('dark-mode');
