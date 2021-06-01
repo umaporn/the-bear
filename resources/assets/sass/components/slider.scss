@@ -74,7 +74,60 @@
     border-radius: 50%;
     margin-top: -5px;
 }
-@media all and (max-width: 768px) {
+
+@media all and (max-width: 420px) {
+    .slider {
+        -webkit-appearance: none; /* Override default CSS styles */
+        appearance: none;
+        width: 24%; /* Full-width */
+        //height: 1px; /* Specified height */
+        //background: #212529; /* Grey background */
+        outline: none; /* Remove outline */
+        opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+        padding: 0px;
+        background-image: url('/images/slider-text.png');
+        background-repeat: no-repeat;
+        background-size: 75px 6px;
+        background-color: transparent;
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:-20px;
+        -moz-background-color: transparent;
+        -webkit-background-color:transparent;
+    }
+    .text-a:before {
+        content: "A";
+        left: -20px;
+        top: -5px;
+        font-size: 12px;
+        margin-left: -1px;
+        position: relative;
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 15px; /* Set a specific slider handle width */
+        height: 15px; /* Slider handle height */
+        background: #fff; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border-radius: 50%;
+        margin-top: -5px;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 15px; /* Set a specific slider handle width */
+        height: 15x; /* Slider handle height */
+        background: #fff; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        border-radius: 50%;
+        margin-top: -5px;
+    }
+}
+@media (min-width: 421px) and (max-width: 768px) {
 
     .slider {
         -webkit-appearance: none; /* Override default CSS styles */

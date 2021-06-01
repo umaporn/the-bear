@@ -99,12 +99,12 @@
                 <form id="search-form" method="GET" action="{{ route('travel.search') }}">
                     {{ csrf_field() }}
                     <input type="text" class="form-control search-menu" name="search" id="search" placeholder="Search">
-                    <button type="submit" class="hide-button">
+                    <button type="submit" class="hide-button  float-right">
                         <i class="fa fa-search" id="filtersubmit"></i>
                     </button>
                 </form>
             </li>
-            <li style="top:-22px; border-top: 1px solid #fff; text-align:center;">
+            <li style="border-top: 1px solid #fff; text-align:center;">
                 <span class="text-a"></span>
                 <input type="range" class="slider" min="1" max="3" step="1" id="font-range">
                 <span class="text-a-last"></span>
@@ -167,7 +167,7 @@
                 <form id="search-form" method="GET" action="{{ route('travel.search') }}">
                     {{ csrf_field() }}
                     <input type="text" class="form-control search-menu" name="search" id="search" placeholder="Search">
-                    <button type="submit" class="hide-button">
+                    <button type="submit" class="hide-button float-right">
                         <i class="fa fa-search" id="filtersubmit"></i>
                     </button>
                 </form>

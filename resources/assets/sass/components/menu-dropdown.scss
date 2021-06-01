@@ -70,12 +70,12 @@ nav a {
 #filtersubmit {
     position: relative;
     z-index: 1;
-    left: 285px;
     top: -33px;
     color: #57bd37;
     cursor: pointer;
     width: 0;
     font-size: 16px;
+    padding-right:25px;
 }
 
 .hide-button {
@@ -173,18 +173,15 @@ ul li:hover > ul {
     li > form > button > #filtersubmit {
         position: relative;
         z-index: 1;
-        left: 320px;
         top: -32px;
         color: #57bd37;
         cursor: pointer;
         width: 0;
         font-size: 16px;
+        float: right;
+        padding-right: 25px;
     }
-    @media all and (max-width: 420px) {
-        li > form > button > #filtersubmit {
-            left: 285px;
-        }
-    }
+
 
     /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
     li > slider::-webkit-slider-thumb {
