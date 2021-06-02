@@ -14,7 +14,7 @@
     <div class="content-desktop">
     </div>
     <div>
-        <div class="container content-detail pt-2" style="margin-top:70px;">
+        <div class="container content-detail search-content pt-2" >
             <form id="search-form" class="search-box" method="GET" action="{{ route('travel.search') }}">
                 {{ csrf_field() }}
                 <div class="p-3 row">

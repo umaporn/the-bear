@@ -104,6 +104,11 @@ const LazyLoad = (function(){
 				$( document )
 					.ajaxStart( function(){
 						$('.gif-loader').show();
+						var fontSize = localStorage.getItem("fontSize");
+						var fontRange = localStorage.getItem("fontRange");
+						$( 'body p' ).css( 'font-size', fontSize + 'px' );
+						$( 'body a' ).css( 'font-size', fontSize + 'px' );
+						$( '#font-range' ).val(fontRange);
 					} )
 					.ajaxStop( function(){
 						$('.gif-loader').hide();
@@ -115,6 +120,7 @@ const LazyLoad = (function(){
 					        contentType: false,
 					        processData: false,
 					        success:     function( result ){
+
 						        $('.gif-loader').remove();
 						        if( url ){
 							        $( '#loadMore' ).remove();
