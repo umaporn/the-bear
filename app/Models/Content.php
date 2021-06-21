@@ -119,7 +119,12 @@ class Content extends Model
         $albumName = [];
         $imageItem = [];
 
+        //str_replace('Today' , 'test', $data);
+
+        $data = str_ireplace('http://desk.thebear.group' , 'http://54.251.205.178', $data);
+
         $components = explode( ']]', $data );
+
 
         foreach( $components as $item ){
             $tags = explode( '[[', $item );
