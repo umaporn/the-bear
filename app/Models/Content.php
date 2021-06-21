@@ -121,7 +121,7 @@ class Content extends Model
 
         //str_replace('Today' , 'test', $data);
 
-        $data = str_ireplace('http://desk.thebear.group' , 'https://54.251.205.178', $data);
+        $data = str_ireplace('http://desk.thebear.group' , 'http://54.251.205.178', $data);
 
         $components = explode( ']]', $data );
 
