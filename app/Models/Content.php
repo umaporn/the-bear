@@ -78,7 +78,7 @@ class Content extends Model
 
     public function getContentList()
     {
-        $data    = $this->where('sitename','5')->orderBy( 'id', 'desc' )->limit( 6 )->get();
+        $data    = $this->where( 'sitename', '5' )->orderBy( 'id', 'desc' )->limit( 6 )->get();
         $newData = $this->transformContent( $data );
 
         return $newData;
@@ -95,7 +95,7 @@ class Content extends Model
 
     public function getContentSearchList( Request $request )
     {
-        $builder = $this->where('sitename','5')->orderBy( 'id', 'desc' );
+        $builder = $this->where( 'sitename', '5' )->orderBy( 'id', 'desc' );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 
@@ -121,10 +121,10 @@ class Content extends Model
 
         //str_replace('Today' , 'test', $data);
 
-        $data = str_ireplace('http://desk.thebear.group' , '54.251.205.178', $data);
+        //$data = str_ireplace('http://desk.thebear.group' , 'http://desk.thebear.group', $data);
+
 
         $components = explode( ']]', $data );
-
 
         foreach( $components as $item ){
             $tags = explode( '[[', $item );
@@ -153,6 +153,33 @@ class Content extends Model
             }
         }
 
+        $data = $this->transformImageFromBackend( $data );
+        return $data;
+    }
+
+    private function transformImageFromBackend( $data )
+    {
+        $imageStr = '';
+        $components = explode( 'http://desk.thebear.group:8055/assets/', $data );
+
+        foreach( $components as $key => $items ){
+            if($key > 0){
+                $item = substr($items, 0, 36);
+
+                if( isset( $item ) ){
+                    $result= ServiceRequest::call(
+                        'GET',
+                        '/assets/' . $item,
+                        true,
+                );
+
+                    $imageStr = 'data:image/png;base64,' . $result . '';
+                    $data = str_replace( 'http://desk.thebear.group:8055/assets/'. $item,  $imageStr , $data );
+                }
+
+            }
+
+        }
         return $data;
     }
 
