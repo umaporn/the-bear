@@ -27,7 +27,7 @@
 
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="{{ mix('/js/all.js') }}"></script>
-
+    @yield('autopilot-script')
 </head>
 <body>
 {!! $gtmBodyTags[0]->body_code !!}
