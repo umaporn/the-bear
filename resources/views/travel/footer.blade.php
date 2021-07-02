@@ -3,20 +3,17 @@
 <div class="container content-detail-660 pt-2">
     <div class="row pt-2">
         <div class="col-sm-2 text-center">
-            <img class="image-preview" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="preview">
+            <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Author->new_image }}" id="preview">
         </div>
         <div class="col-sm-10 written-by">
             <span class="text-gray">Written by</span>
-            <h5>Hungry Bear</h5>
+            <h5>{{ $contentDetail['data'][0]->Author->name }}</h5>
         </div>
     </div>
     <div class="row text-gray">
         <div class="col">
-            <p>Nullam a ornare enim. Quisque sollicitudin tempor odio. Sed molestie lectus augue, et placerat elit
-               ultrices
-               eget. Donec cursus arcu nulla, a vehicula lacus dignissim ac. Nunc dictum metus et urna posuere, ac
-               imperdiet dolor tempus. Proin et placerat enim. Curabitur a est tincidunt ipsum elementum feugiat in at
-               ligula. Nunc placerat egestas eros, sed tincidunt sem condimentum ut.
+            <p>
+                {!! $contentDetail['data'][0]->Author->longtext !!}
             </p>
         </div>
 
@@ -27,19 +24,17 @@
 
 <div class="container content-detail-660 pt-2">
     <div class="col-sm-2 text-center d-block d-sm-none pb-3">
-        <img class="image-preview" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="preview">
+        <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
     </div>
-    <h4>The Bear Travel | Experience like a Local</h4>
+    <h4>{{ $contentDetail['data'][0]->Sitename->title }}</h4>
     <div class="row text-gray">
         <div class="col-10">
-            <p>A fast-growing Thailand Travel Blog written by expats and Thais since 2017. We will share our experiences
-               and ideas from an insider point of view for you to create your own unique Thailand experience.
-               For the latest news and events about The Bear Travel, follow us on Facebook, Instagram, Twitter,
-               Pinterest, or YouTube.
+            <p>
+                {!! $contentDetail['data'][0]->Sitename->longtext !!}
             </p>
         </div>
         <div class="col-2">
-            <img class="image-preview d-none d-sm-block" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="preview">
+            <img class="image-preview d-none d-sm-block" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
         </div>
     </div>
 </div>
@@ -49,18 +44,18 @@
 <div class="container content-detail-660 pt-2 green-bg">
     <div class="row p-2">
         <div class="col-sm-2 text-center">
-            <img class="image-preview" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" id="preview">
+            <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_vip_image }}" id="preview">
         </div>
         <div class="col-sm-10 written-by">
-            <p class="m-0">Thailand Insights</p>
-            <h6>The Bear Travel VIP</h6>
-            <h6>FREE Membership</h6>
+            <p class="m-0">{{ $contentDetail['data'][0]->Sitename->vip_title1 }}</p>
+            <h6>{{ $contentDetail['data'][0]->Sitename->vip_title2 }}</h6>
+            <h6>{{ $contentDetail['data'][0]->Sitename->vip_title3 }}</h6>
         </div>
     </div>
     <div class="row p-2">
         <div class="col">
-            <p>Get our free Thailand Insight eBook. Our complete Thailand Guide and get more out of our Trip -
-               Experience like a local.
+            <p>
+                {!! $contentDetail['data'][0]->Sitename->longtext !!}
             </p>
         </div>
     </div>

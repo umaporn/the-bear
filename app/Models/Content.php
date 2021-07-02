@@ -56,9 +56,44 @@ class Content extends Model
         return $this->belongsTo( 'App\Models\Menu', 'menu' );
     }
 
+    /**
+     * Get EZusers model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo User model relationship
+     */
+    public function Sitename()
+    {
+        return $this->belongsTo( 'App\Models\Sitename', 'sitename' );
+    }
+
     public function getContentDetail( $id )
     {
-        $data          = $this->with( [ 'Author', 'Gallery' ] )->where( [ 'id' => $id ] )->get();
+        $data = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id ] )->get();
+
+        $result = ServiceRequest::call(
+            'GET',
+            '/assets/' . $data[0]->Author->image,
+            true,
+                );
+
+        $data[0]->Author->setAttribute( 'new_image', $result );
+
+        $result = ServiceRequest::call(
+            'GET',
+            '/assets/' . $data[0]->Sitename->image,
+            true,
+                );
+
+        $data[0]->Sitename->setAttribute( 'new_image', $result );
+
+        $result = ServiceRequest::call(
+            'GET',
+            '/assets/' . $data[0]->Sitename->vip_image,
+            true,
+                );
+
+        $data[0]->Sitename->setAttribute( 'new_vip_image', $result );
+
         $newContent    = $this->transformContentDetail( $data[0]->content );
         $image         = $this->getGallery( $data );
         $menu          = $this->getMenu();
@@ -119,11 +154,6 @@ class Content extends Model
         $albumName = [];
         $imageItem = [];
 
-        //str_replace('Today' , 'test', $data);
-
-        //$data = str_ireplace('http://desk.thebear.group' , 'http://desk.thebear.group', $data);
-
-
         $components = explode( ']]', $data );
 
         foreach( $components as $item ){
@@ -154,32 +184,34 @@ class Content extends Model
         }
 
         $data = $this->transformImageFromBackend( $data );
+
         return $data;
     }
 
     private function transformImageFromBackend( $data )
     {
-        $imageStr = '';
+        $imageStr   = '';
         $components = explode( 'http://desk.thebear.group:8055/assets/', $data );
 
         foreach( $components as $key => $items ){
-            if($key > 0){
-                $item = substr($items, 0, 36);
+            if( $key > 0 ){
+                $item = substr( $items, 0, 36 );
 
                 if( isset( $item ) ){
-                    $result= ServiceRequest::call(
+                    $result = ServiceRequest::call(
                         'GET',
                         '/assets/' . $item,
                         true,
                 );
 
                     $imageStr = 'data:image/png;base64,' . $result . '';
-                    $data = str_replace( 'http://desk.thebear.group:8055/assets/'. $item,  $imageStr , $data );
+                    $data     = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
                 }
 
             }
 
         }
+
         return $data;
     }
 
