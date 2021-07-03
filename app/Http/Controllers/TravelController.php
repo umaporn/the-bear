@@ -73,6 +73,25 @@ class TravelController extends Controller
      *
      * @return Factory|View Travel page
      */
+    public function tags( $slug, Request $request )
+    {
+        $contentDetail = $this->contentModel->getHeaderMenu();
+        $contentList   = $this->contentModel->getContentTagsList( $slug, $request );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'travel.tags_list', compact( 'contentList' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'travel.tags', compact( 'contentDetail', 'contentList', 'slug' ) );
+    }
+
+    /**
+     * Display travel page.
+     *
+     * @return Factory|View Travel page
+     */
     public function detail( $id )
     {
         $contentDetail = $this->contentModel->getContentDetail( $id );

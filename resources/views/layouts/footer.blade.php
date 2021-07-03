@@ -8,19 +8,19 @@
                 <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
                     <a href="{{ route('travel.index') }}"><img src="{{ asset('images/logo-footer/travel.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
-                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
+                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-center">
                     <a href="http://thebear.world/" target="_blank"><img src="{{ asset('images/logo-footer/world.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
-                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
+                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-right">
                     <a href="http://thebear.lgbt/" target="_blank"><img src="{{ asset('images/logo-footer/lgbt.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
                 <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
                     <a href="http://thebear.technology/" target="_blank"><img src="{{ asset('images/logo-footer/tech.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
-                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
+                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-center">
                     <a href="http://thebear.technology/" target="_blank"><img src="{{ asset('images/logo-footer/earth.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
-                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2">
+                <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-right">
                     <a href="http://thebear.group/" target="_blank"><img src="{{ asset('images/logo-footer/group.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
             </div>

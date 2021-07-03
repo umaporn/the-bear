@@ -16,7 +16,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'The Bear',
+    'name'             => 'The Bear',
+    'travel_site_name' => 'The Bear Travel',
 
     /*
     |--------------------------------------------------------------------------

@@ -24,7 +24,8 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : ''}} ">
                         <img class="d-block w-100" src="data:image/png;base64,{{ $storyItem->new_main_image }}" alt="{{ $storyItem->name }}">
                         <div class="carousel-caption float-right">
-                            <a href="{{ route('travel.detail', ['id' => $storyItem['content'][0]->id, 'slug' => str_replace(' ', '-', $storyItem['content'][0]->title ) ]) }}" class="detail-link">{{ $storyItem->name }} >> </a>
+                            <a href="{{ route('travel.detail', ['id' => $storyItem['content'][0]->id, 'slug' => str_replace(' ', '-', $storyItem['content'][0]->title ) ]) }}" class="detail-link">{{ $storyItem->name }}
+                                >> </a>
                         </div>
                     </div>
                 @endforeach
@@ -43,15 +44,15 @@
         <div class="container content-detail pt-2">
             <h1 class="text-center">Pick your flavor</h1>
             <div class="row">
-                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'explore' ]) }}">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.tags', ['slug' => 'explore' ]) }}">
                     <img src="{{ asset('images/explore.svg') }}">
                     <div class="pick-flavor-text">Explore</div>
                 </div>
-                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'ride' ]) }}">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.tags', ['slug' => 'ride' ]) }}">
                     <img src="{{ asset('images/ride.svg') }}">
                     <div class="pick-flavor-text">Ride</div>
                 </div>
-                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.menu', ['menuID' => '1' , 'slug' => 'eat' ]) }}">
+                <div class="col-12 col-sm-4 pick-flavor" data-url="{{ route('travel.tags', ['slug' => 'eat' ]) }}">
                     <img src="{{ asset('images/eat.svg') }}">
                     <div class="pick-flavor-text">Eat</div>
                 </div>

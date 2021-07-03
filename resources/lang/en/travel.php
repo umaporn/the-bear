@@ -15,7 +15,7 @@ return [
 
     'page_title' => [
         'index'  => 'The bear travel',
-        'detail' => 'The bear travel | :travel_title',
+        'detail' => ':travel_title | The bear travel',
         'menu'   => 'The bear travel | :menu_title',
     ],
 
@@ -33,19 +33,19 @@ return [
 
     'og_title' => [
         'index'  => 'The bear travel',
-        'detail' => 'The bear travel :travel_title',
+        'detail' => ':travel_title | The bear travel',
         'menu'   => 'The bear travel | :menu_title',
     ],
 
     'og_description' => [
         'index'  => 'The bear travel',
-        'detail' => 'The bear travel :travel_description',
+        'detail' => ':travel_description',
         'menu'   => 'The bear travel | :menu_title',
     ],
 
     'og_keyword' => [
         'index'  => 'The bear travel',
-        'detail' => 'The bear travel :travel_keyword',
+        'detail' => ':travel_keyword',
         'menu'   => 'The bear travel | :menu_title',
     ],
 

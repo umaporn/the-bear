@@ -128,6 +128,18 @@ class Content extends Model
         return $newData;
     }
 
+    public function getContentTagsList( $slug, Request $request )
+    {
+        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )
+                        ->where( 'tags', 'like', "%" . $slug . "%" )
+                        ->where( 'sitename', '5' );
+
+        $data    = Search::search( $builder, 'content', $request );
+        $newData = $this->transformContent( $data );
+
+        return $newData;
+    }
+
     public function getContentSearchList( Request $request )
     {
         $builder = $this->where( 'sitename', '5' )->orderBy( 'id', 'desc' );

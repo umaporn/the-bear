@@ -10,7 +10,7 @@
             'travel_keyword' => $contentDetail['data'][0]->keyword,
         ]))
 
-@section('og-image', asset(''))
+@section('og-image', 'data:image/png;base64,'.$mainImage)
 @section('og-title', __('travel.og_title.detail', [
             'travel_title' => $contentDetail['data'][0]->title,
         ] ))
@@ -24,6 +24,8 @@
             'travel_id' => $contentDetail['data'][0]->id,
             'slug' => str_replace(" ", "-", $contentDetail['data'][0]->title)
         ]) )
+
+@section('og-sitename', __('travel.page_title.index') )
 
 @section('autopilot-script')
     <!-- Autopilot thebeartravel capture code -->

@@ -2,11 +2,11 @@
     background-color: #152028;
     color: #dee2e6;
 
-    h1,h2{
+    h1, h2 {
         color: #dee2e6;
     }
 
-    .bg-gray{
+    .bg-gray {
         background-color: #212529;
         color: #dee2e6;
     }
@@ -97,6 +97,7 @@ body {
 .content-detail-660 {
     max-width: 660px;
 }
+
 @media screen and (max-width: 660px) {
     .content-detail {
         font-size: 14px;
@@ -261,14 +262,20 @@ a.detail-link {
 .bg-gray {
     background-color: #EAEAEA;
 }
-
 .img-thumb {
-    height: 200px;
+    position: relative;
 }
 
-.cover {
-    width: 200px;
-    height: 200px;
+.img-thumb::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -287,14 +294,14 @@ input.form-control, textarea.form-control {
 
 .search-box {
 
-    width:50%;
+    width: 50%;
     margin: 0 auto;
 
 }
 
 @media screen and (max-width: 750px) {
     .search-box {
-        width:100%;
+        width: 100%;
         margin-top: 30px;
     }
 }
@@ -319,32 +326,38 @@ input.form-control, textarea.form-control {
 
 .carousel-caption {
     text-align: right;
-    background-color: hsla(0,0%,100%,.3);
+    background-color: hsla(0, 0%, 100%, .3);
     padding: 10px 20px;
-    right:0;
-    bottom:40px;
-    left:auto;
-    .detail-link{
-        color:black;
+    right: 0;
+    bottom: 40px;
+    left: auto;
+
+    .detail-link {
+        color: black;
         font-size: 30px;
     }
 }
+
 .carousel-caption {
     bottom: 340px;
 }
+
 @media screen and (max-width: 750px) {
     .carousel-caption {
         bottom: 140px;
-        .detail-link{
+
+        .detail-link {
             font-size: 20px;
         }
     }
 }
-.search-content{
-    margin-top:70px;
+
+.search-content {
+    margin-top: 70px;
 }
+
 @media screen and (max-width: 750px) {
     .search-content {
-        margin-top:30px;
+        margin-top: 30px;
     }
 }
