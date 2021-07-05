@@ -10,7 +10,9 @@
                             <div class="row g-0">
                                 <div class="col-md-8">
                                     <div class="card-body p-0">
-                                        <h6 class="card-title" ><a href="{{ route('travel.detail', [ 'id' => $moreItem->id, 'slug' => str_replace(' ', '-', $moreItem->title) ]) }}" class="detail-link">{{ $moreItem->title }}</a></h6>
+                                        <h6 class="card-title">
+                                            <a href="{{ route('travel.detail', [ 'id' => $moreItem->id, 'slug' => str_replace(' ', '-', $moreItem->title) ]) }}" class="detail-link">{{ $moreItem->title }}</a>
+                                        </h6>
                                         @if($moreItem['Author'])
                                             <p class="card-text">
                                                 <small class="text-muted">{{ $moreItem['Author']->name }}</small>
@@ -20,9 +22,13 @@
                                 </div>
                                 <div class="col-md-4" style="padding:0px">
                                     @if($moreItem->new_main_image)
-                                        <img src="data:image/png;base64,{{ $moreItem->new_main_image }}" class="w-100">
+                                        <div class="img-thumb">
+                                            <img src="data:image/png;base64,{{ $moreItem->new_main_image }}" class="cover">
+                                        </div>
                                     @else
-                                        <img src="{{ asset('images/100x100.png') }}">
+                                        <div class="img-thumb">
+                                            <img src="{{ asset('images/100x100.png') }}" class="cover">
+                                        </div>
                                     @endif
                                 </div>
                             </div>
