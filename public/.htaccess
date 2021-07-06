@@ -3,110 +3,15 @@
         Options -MultiViews
     </IfModule>
 
+    <FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+
     RewriteEngine On
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-    Redirect 301 /dtgo/index.html /
-    Redirect 301 /dtgo/index.php /
-    Redirect 301 /dtgo/en/index.php /
-    Redirect 301 /dtgo/en/contact.html /contact
-    Redirect 301 /dtgo/en/csr.html /csr
-    Redirect 301 /dtgo/en/csr_buddharaksa.html /csr
-    Redirect 301 /dtgo/en/csr_icare.html /csr
-    Redirect 301 /dtgo/en/faq.html /
-    Redirect 301 /dtgo/en/press.php /news
-    Redirect 301 /dtgo/en/news.php /news
-    Redirect 301 /dtgo/en/press_published.html /news
-    Redirect 301 /dtgo/en/network.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_realestate.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_research.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_architecture.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_interior.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_construction.html /our-business
-    Redirect 301 /dtgo/en/business_dtland_inspection.html /our-business
-    Redirect 301 /dtgo/en/business_dtglobal_trading.html /our-business
-    Redirect 301 /dtgo/en/business_dtglobal_international.html /our-business
-    Redirect 301 /dtgo/en/business_dtsystem_management.html /our-business
-    Redirect 301 /dtgo/en/about.html /about
-    Redirect 301 /dtgo/en/about_pledge.html /about
-    Redirect 301 /dtgo/en/about_milestone.html /about/story
-    Redirect 301 /dtgo/en/about_manager.html /about/management
-    Redirect 301 /dtgo/en/about_consult.html /about/management
-    Redirect 301 /dtgo/en/about_diagram.html /our-business
-    Redirect 301 /dtgo/en/about_partners.html /our-business
-    Redirect 301 /dtgo/en/about_awards.html /our-business
-    Redirect 301 /dtgo/en/contact_form.html /contact
-    Redirect 301 /dtgo/en/contact_job.html /careers
-    Redirect 301 /dplans/link.php /our-business
-    Redirect 301 /dtgo/en/footer.html /
-    Redirect 301 /dtgo/en/detail/Coordinator_job_detail.html /careers
-    Redirect 301 /dtgo/en/detail/Accountant_job_detail.html /careers
-    Redirect 301 /dtgo/en/detail/Business_Development_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/en/detail/Risk_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/en/business_dtland.html /our-business
-    Redirect 301 /dtgo/en/press_news_01.html /news
-    Redirect 301 /dtgo/en/business_dtglobal.html /our-business
-    Redirect 301 /dtgo/en/detail/Project_Development_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/th/detail/Procuremant_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/en/press_news_06.html /news
-    Redirect 301 /dtgo/en/press_news_13.html /news
-    Redirect 301 /dtgo/en/business_dtsystem.html /our-business
-    Redirect 301 /dtgo/en/press_news_10.html /news
-    Redirect 301 /dtgo/th/index.php /
-    Redirect 301 /dtgo/th/index.html /
-    Redirect 301 /dtgo/th/contact.html /contact
-    Redirect 301 /dtgo/th/csr.html /csr
-    Redirect 301 /dtgo/th/csr_buddharaksa.html /csr
-    Redirect 301 /dtgo/th/csr_icare.html /csr
-    Redirect 301 /dtgo/th/faq.html /
-    Redirect 301 /dtgo/th/press.php /news
-    Redirect 301 /dtgo/th/press_published.html /news
-    Redirect 301 /dtgo/th/network.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_realestate.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_research.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_architecture.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_interior.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_construction.html /our-business
-    Redirect 301 /dtgo/th/business_dtland_inspection.html /our-business
-    Redirect 301 /dtgo/th/business_dtglobal_trading.html /our-business
-    Redirect 301 /dtgo/th/business_dtglobal_international.html /our-business
-    Redirect 301 /dtgo/th/business_dtsystem_management.html /our-business
-    Redirect 301 /dtgo/th/about.html /about
-    Redirect 301 /dtgo/th/about_pledge.html /about
-    Redirect 301 /dtgo/th/about_milestone.html /about/story
-    Redirect 301 /dtgo/th/about_manager.html /about/management
-    Redirect 301 /dtgo/th/about_consult.html /about/management
-    Redirect 301 /dtgo/th/about_diagram.html /our-business
-    Redirect 301 /dtgo/th/about_partners.html /our-business
-    Redirect 301 /dtgo/th/about_awards.html /our-business
-    Redirect 301 /dtgo/th/contact_form.html /contact
-    Redirect 301 /dtgo/th/contact_job.html /careers
-    Redirect 301 /dtgo/th/footer.html /
-    Redirect 301 /dtgo/th/detail/Coordinator_job_detail.html /careers
-    Redirect 301 /dtgo/th/detail/Accountant_job_detail.html /careers
-    Redirect 301 /dtgo/th/detail/Business_Development_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/th/detail/Risk_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/th/business_dtland.html /our-business
-    Redirect 301 /dtgo/th/press_news_01.html /news
-    Redirect 301 /dtgo/th/business_dtglobal.html /our-business
-    Redirect 301 /dtgo/th/detail/Project_Development_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/th/detail/Procuremant_Manager_job_detail.html /careers
-    Redirect 301 /dtgo/th/press_news_06.html /news
-    Redirect 301 /dtgo/th/press_news_13.html /news
-    Redirect 301 /dtgo/th/business_dtsystem.html /our-business
-    Redirect 301 /dtgo/th/press_news_10.html /news
-    Redirect 301 /dtgo/th/news.php /news
-    Redirect 301 /dtgo/th /
-    Redirect 301 /dtgo/en /
-    Redirect 301 /business /our-business
-    Redirect 301 /th/business /th/our-business
-    Redirect 301 /about/management-team /about/management
-    Redirect 301 /th/about/management-team /th/about/management
-    Redirect 301 /about/story /about/ourstory
-    Redirect 301 /th/about/story /th/about/ourstory
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -116,4 +21,11 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    ExpiresByType text/css "access 1 month"
+    ExpiresByType image/jpg "access 1 year"
+    ExpiresByType image/jpeg "access 1 year"
+    ExpiresByType image/png "access 1 year"
+    ExpiresByType text/html "access 1 month"
+    ExpiresByType text/x-javascript "access 1 month"
 </IfModule>
