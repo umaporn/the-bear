@@ -1,11 +1,11 @@
+<FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+    Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
-
-    <FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-        Header set Cache-Control "max-age=2592000, public"
-    </FilesMatch>
 
     RewriteEngine On
 
