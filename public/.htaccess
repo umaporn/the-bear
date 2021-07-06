@@ -4,7 +4,11 @@
     </IfModule>
 
     <FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-        Header set Cache-Control "max-age=2592000, public"
+        Header set Pragma "public"
+        Header append Cache-Control "max-age=290304000, public"
+        RequestHeader unset Cookie
+        Header unset Cookie
+        Header unset Set-Cookie
     </FilesMatch>
 
     <IfModule mod_expires.c>
