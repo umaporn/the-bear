@@ -15,7 +15,7 @@
 
     # 2 DAYS
     <FilesMatch "\.(xml|txt|css|js)$">
-    Header set Cache-Control "max-age=604800, proxy-revalidate"
+    Header set Cache-Control "max-age=29030400, proxy-revalidate"
     </FilesMatch>
 
     # 1 MIN
