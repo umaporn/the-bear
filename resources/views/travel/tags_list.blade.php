@@ -10,7 +10,9 @@
                 </a>
             @else
                 <a href="{{ route('travel.detail', [ 'id' => $list->id, 'slug' => str_replace(' ', '-', $list->title ) ]) }}">
-                    <img src="https://dummyimage.com/400x400/641212/fff" style="width:100%">
+                     <div class="img-thumb">
+                                    <img src="https://dummyimage.com/400x400/641212/fff" class="cover">
+                                    </div>
                 </a>
             @endif
             <div class="description-box">
