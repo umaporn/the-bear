@@ -186,18 +186,22 @@ class Content extends Model
                                         ] )
                                ->get();
 
-                $imageID  = DB::table( 'gallery_image' )
-                              ->where( [
-                                           'gallery_id' => $galleryID[0]->id,
-                                       ] )
-                              ->get();
-                $imageStr = '';
-                foreach( $imageID as $imageItem ){
-                    $image_id  = $imageItem->image_id;
-                    $imageData = DB::table( 'image' )->where( 'id', $image_id )->get();
-                    $imageStr  .= $this->getImage( $imageData->toArray() );
+                if(isset( $galleryID[0] ) ){
+                    $imageID  = DB::table( 'gallery_image' )
+                                  ->where( [
+                                               'gallery_id' => $galleryID[0]->id,
+                                           ] )
+                                  ->get();
+                    $imageStr = '';
+                    foreach( $imageID as $imageItem ){
+                        $image_id  = $imageItem->image_id;
+                        $imageData = DB::table( 'image' )->where( 'id', $image_id )->get();
+                        $imageStr  .= $this->getImage( $imageData->toArray() );
+                    }
+                    $data = str_replace( '[[' . $tags[1] . ']]', '<div id="columns">' . $imageStr . '</div>', $data );
                 }
-                $data = str_replace( '[[' . $tags[1] . ']]', '<div id="columns">' . $imageStr . '</div>', $data );
+
+
             }
         }
 
