@@ -70,29 +70,35 @@ class Content extends Model
     {
         $data = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id ] )->get();
 
-        $result = ServiceRequest::call(
-            'GET',
-            '/assets/' . $data[0]->Author->image,
-            true,
+        if(isset( $data[0]->Author->image)){
+            $result = ServiceRequest::call(
+                'GET',
+                '/assets/' . $data[0]->Author->image,
+                true,
                 );
 
-        $data[0]->Author->setAttribute( 'new_image', $result );
+            $data[0]->Author->setAttribute( 'new_image', $result );
+        }
 
-        $result = ServiceRequest::call(
-            'GET',
-            '/assets/' . $data[0]->Sitename->image,
-            true,
+        if(isset( $data[0]->Sitename->image)){
+            $result = ServiceRequest::call(
+                'GET',
+                '/assets/' . $data[0]->Sitename->image,
+                true,
                 );
 
-        $data[0]->Sitename->setAttribute( 'new_image', $result );
+            $data[0]->Sitename->setAttribute( 'new_image', $result );
+        }
 
-        $result = ServiceRequest::call(
-            'GET',
-            '/assets/' . $data[0]->Sitename->vip_image,
-            true,
+        if(isset( $data[0]->Sitename->vip_image)){
+            $result = ServiceRequest::call(
+                'GET',
+                '/assets/' . $data[0]->Sitename->vip_image,
+                true,
                 );
 
-        $data[0]->Sitename->setAttribute( 'new_vip_image', $result );
+            $data[0]->Sitename->setAttribute( 'new_vip_image', $result );
+        }
 
         $newContent    = $this->transformContentDetail( $data[0]->content );
         $image         = $this->getGallery( $data );

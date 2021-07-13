@@ -1,61 +1,71 @@
+@if($contentDetail['data'][0]->Author)
 <div class="dotted-space">...</div>
-
 <div class="container content-detail-660 pt-2">
     <div class="row pt-2">
         <div class="col-sm-2 text-center">
-            <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Author->new_image }}" id="preview">
+            @if(isset($contentDetail['data'][0]->Author->new_image))
+                <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Author->new_image }}" id="preview">
+            @endif
         </div>
         <div class="col-sm-10 written-by">
             <span class="text-gray">Written by</span>
-            <h5>{{ $contentDetail['data'][0]->Author->name }}</h5>
+            <h5>{{ isset($contentDetail['data'][0]->Author->name) ? $contentDetail['data'][0]->Author->name : '' }}</h5>
         </div>
     </div>
     <div class="row text-gray">
         <div class="col">
             <p>
-                {!! $contentDetail['data'][0]->Author->longtext !!}
+                {!! isset($contentDetail['data'][0]->Author->longtext) ? $contentDetail['data'][0]->Author->longtext : '' !!}
             </p>
         </div>
 
     </div>
 </div>
+@endif
 
+@if($contentDetail['data'][0]->Sitename)
 <div class="dotted-space pt-3 pb-3">...</div>
 
 <div class="container content-detail-660 pt-2">
     <div class="col-sm-2 text-center d-block d-sm-none pb-3">
-        <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
+        @if(isset($contentDetail['data'][0]->Sitename->new_image))
+            <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
+        @endif
     </div>
-    <h4>{{ $contentDetail['data'][0]->Sitename->title }}</h4>
+    <h4>{{ isset( $contentDetail['data'][0]->Sitename->title ) ?  $contentDetail['data'][0]->Sitename->title : '' }}</h4>
     <div class="row text-gray">
         <div class="col-10">
             <p>
-                {!! $contentDetail['data'][0]->Sitename->longtext !!}
+                {!! isset( $contentDetail['data'][0]->Sitename->longtext ) ? $contentDetail['data'][0]->Sitename->longtext : '' !!}
             </p>
         </div>
         <div class="col-2">
-            <img class="image-preview d-none d-sm-block" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
+            @if(isset($contentDetail['data'][0]->Sitename->new_image))
+                <img class="image-preview d-none d-sm-block" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_image }}" id="preview">
+            @endif
         </div>
     </div>
 </div>
-
+@endif
 <div class="dotted-space pt-3 pb-3">...</div>
 
 <div class="container content-detail-660 pt-2 green-bg">
     <div class="row p-2">
         <div class="col-sm-2 text-center">
-            <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_vip_image }}" id="preview">
+            @if(isset($contentDetail['data'][0]->Sitename->new_vip_image))
+                <img class="image-preview" src="data:image/png;base64,{{ $contentDetail['data'][0]->Sitename->new_vip_image }}" id="preview">
+            @endif
         </div>
         <div class="col-sm-10 written-by">
-            <p class="m-0">{{ $contentDetail['data'][0]->Sitename->vip_title1 }}</p>
-            <h6>{{ $contentDetail['data'][0]->Sitename->vip_title2 }}</h6>
-            <h6>{{ $contentDetail['data'][0]->Sitename->vip_title3 }}</h6>
+            <p class="m-0">{{ isset( $contentDetail['data'][0]->Sitename->vip_title1 ) ? $contentDetail['data'][0]->Sitename->vip_title1 : '' }}</p>
+            <h6>{{ isset( $contentDetail['data'][0]->Sitename->vip_title2 ) ? $contentDetail['data'][0]->Sitename->vip_title2 : ''}}</h6>
+            <h6>{{ isset( $contentDetail['data'][0]->Sitename->vip_title3 ) ? $contentDetail['data'][0]->Sitename->vip_title3 : '' }}</h6>
         </div>
     </div>
     <div class="row p-2">
         <div class="col">
             <p>
-                {!! $contentDetail['data'][0]->Sitename->longtext !!}
+                {!! isset( $contentDetail['data'][0]->Sitename->longtext ) ?$contentDetail['data'][0]->Sitename->longtext : '' !!}
             </p>
         </div>
     </div>
