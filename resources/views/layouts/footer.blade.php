@@ -18,7 +18,7 @@
                     <a href="http://thebear.technology/" target="_blank"><img src="{{ asset('images/logo-footer/tech.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
                 <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-center">
-                    <a href="http://thebear.technology/" target="_blank"><img src="{{ asset('images/logo-footer/earth.png') }}" class="footer-image" alt="tbt-travel"></a>
+                    <a href="http://thebear.earth/" target="_blank"><img src="{{ asset('images/logo-footer/earth.png') }}" class="footer-image" alt="tbt-travel"></a>
                 </div>
                 <div class="col-4 col-sm-6 col-md-6 col-lg-4 p-2 text-right">
                     <a href="http://thebear.group/" target="_blank"><img src="{{ asset('images/logo-footer/group.png') }}" class="footer-image" alt="tbt-travel"></a>
