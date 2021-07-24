@@ -47,7 +47,7 @@
     </div>
 </div>
 @endif
-<div class="dotted-space pb-3">...</div>
+<div class="dotted-space " style="margin-bottom:30px;">...</div>
 
 <div class="container content-detail-660 pt-2 green-bg">
     <div class="row p-2">
@@ -64,9 +64,7 @@
     </div>
     <div class="row p-2">
         <div class="col">
-            <p>
-                {!! isset( $contentDetail['data'][0]->Sitename->vip_longtext ) ?$contentDetail['data'][0]->Sitename->vip_longtext : '' !!}
-            </p>
+            {!! isset( $contentDetail['data'][0]->Sitename->vip_longtext ) ?$contentDetail['data'][0]->Sitename->vip_longtext : '' !!}
         </div>
     </div>
     <div class="p-2">
