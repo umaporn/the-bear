@@ -1,7 +1,5 @@
 @if($contentDetail['data'][0]->Author)
-    <div class="dotted-space">.</div>
-    <div class="dotted-space">.</div>
-    <div class="dotted-space pb-3">.</div>
+    <div class="dotted-space">...</div>
 <div class="container content-detail-660 pt-2">
     <div class="row pt-2">
         <div class="col-sm-2 text-center">
@@ -26,9 +24,7 @@
 @endif
 
 @if($contentDetail['data'][0]->Sitename)
-    <div class="dotted-space">.</div>
-    <div class="dotted-space">.</div>
-    <div class="dotted-space pb-3">.</div>
+    <div class="dotted-space pb-3">...</div>
 
 <div class="container content-detail-660 pt-2">
     <div class="col-sm-2 text-center d-block d-sm-none pb-3">
@@ -51,9 +47,7 @@
     </div>
 </div>
 @endif
-<div class="dotted-space">.</div>
-<div class="dotted-space">.</div>
-<div class="dotted-space pb-3">.</div>
+<div class="dotted-space pb-3">...</div>
 
 <div class="container content-detail-660 pt-2 green-bg">
     <div class="row p-2">
@@ -71,7 +65,7 @@
     <div class="row p-2">
         <div class="col">
             <p>
-                {!! isset( $contentDetail['data'][0]->Sitename->vip_longtext ) ?$contentDetail['data'][0]->Sitename->longtext : '' !!}
+                {!! isset( $contentDetail['data'][0]->Sitename->vip_longtext ) ?$contentDetail['data'][0]->Sitename->vip_longtext : '' !!}
             </p>
         </div>
     </div>
