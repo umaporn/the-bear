@@ -65,7 +65,7 @@
     <div class="row p-2">
         <div class="col">
             <p>
-                {!! isset( $contentDetail['data'][0]->Sitename->longtext ) ?$contentDetail['data'][0]->Sitename->longtext : '' !!}
+                {!! isset( $contentDetail['data'][0]->Sitename->vip_longtext ) ?$contentDetail['data'][0]->Sitename->longtext : '' !!}
             </p>
         </div>
     </div>
