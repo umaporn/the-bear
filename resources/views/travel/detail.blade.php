@@ -62,21 +62,21 @@
                     {!! $contentDetail['newContent'] !!}
                 </div>
             </div>
-            <div class="row">
-                <h4>Gallery</h4>
-                <div id="columns">
-                    @foreach($galleryImage as $image)
-                        <figure>
-                            <a href="data:image/png;base64,{{ $image->newImage }}"
-                               class="gallery-pic" data-fancybox="gallery-units"
-                               data-caption="{{ $image[0]->description }}">
-                                <img src="data:image/png;base64,{{ $image->newImage }}" class="img-thumb"
-                                     alt="{{ $image[0]->alt_tag }}" title="{{ $image[0]->alt_tag }}">
-                            </a>
-                        </figure>
-                    @endforeach
+                <div class="row">
+                    <h4>Gallery</h4>
+                    <div id="columns">
+                        @foreach($galleryImage as $image)
+                            <figure>
+                                <a href="data:image/png;base64,{{ $image->newImage }}"
+                                   class="gallery-pic" data-fancybox="gallery-units"
+                                   data-caption="{{ $image[0]->description }}">
+                                    <img src="data:image/png;base64,{{ $image->newImage }}" class="img-thumb"
+                                         alt="{{ $image[0]->alt_tag }}" title="{{ $image[0]->alt_tag }}">
+                                </a>
+                            </figure>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
         </div>
 
         @include('travel.footer')
