@@ -5,9 +5,19 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    @foreach ( $pages as $page )
+    @foreach ( $menuList as $menu )
         <url>
-            <loc>{{ route( $page['routeName'] ) }}</loc>
+            <loc>{{ config('app.url') . '/' . $menu->id . '/' . str_replace(' ', '-', $menu->menu_name ) }}</loc>
+            <lastmod>2021-07-03T04:08:51+00:00</lastmod>
+            <priority>0.51</priority>
+        </url>
+    @endforeach
+
+    @foreach ( $contentList as $content )
+        <url>
+            <loc>{{ config('app.url') . '/' . $content->id . '/' . str_replace(' ', '-', $content->title ) }}</loc>
+            <lastmod>2021-07-03T04:08:51+00:00</lastmod>
+            <priority>0.51</priority>
         </url>
     @endforeach
 

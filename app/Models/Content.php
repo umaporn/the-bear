@@ -68,12 +68,12 @@ class Content extends Model
 
     public function getContentDetail( $id )
     {
-        $data = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id, 'status' => 'enable' ] )->get();
+        $data    = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id, 'status' => 'enable' ] )->get();
         $content = null;
-        if($data->isEmpty()){
+        if( $data->isEmpty() ){
             return $content;
-        }else{
-            if(isset( $data[0]->Author->image)){
+        } else {
+            if( isset( $data[0]->Author->image ) ){
                 $result = ServiceRequest::call(
                     'GET',
                     '/assets/' . $data[0]->Author->image,
@@ -83,7 +83,7 @@ class Content extends Model
                 $data[0]->Author->setAttribute( 'new_image', $result );
             }
 
-            if(isset( $data[0]->Sitename->image)){
+            if( isset( $data[0]->Sitename->image ) ){
                 $result = ServiceRequest::call(
                     'GET',
                     '/assets/' . $data[0]->Sitename->image,
@@ -93,7 +93,7 @@ class Content extends Model
                 $data[0]->Sitename->setAttribute( 'new_image', $result );
             }
 
-            if(isset( $data[0]->Sitename->vip_image)){
+            if( isset( $data[0]->Sitename->vip_image ) ){
                 $result = ServiceRequest::call(
                     'GET',
                     '/assets/' . $data[0]->Sitename->vip_image,
@@ -112,7 +112,6 @@ class Content extends Model
             return $content;
         }
 
-
     }
 
     public function getHeaderMenu()
@@ -129,6 +128,13 @@ class Content extends Model
         $newData = $this->transformContent( $data );
 
         return $newData;
+    }
+
+    public function getContentListForSitemap()
+    {
+        $data = $this->where( [ 'sitename' => '5', 'status' => 'enable' ] )->orderBy( 'id', 'asc' )->get();
+
+        return $data;
     }
 
     public function getContentMenuList( $menuID, Request $request )
@@ -192,7 +198,7 @@ class Content extends Model
                                         ] )
                                ->get();
 
-                if(isset( $galleryID[0] ) ){
+                if( isset( $galleryID[0] ) ){
                     $imageID  = DB::table( 'gallery_image' )
                                   ->where( [
                                                'gallery_id' => $galleryID[0]->id,
@@ -206,7 +212,6 @@ class Content extends Model
                     }
                     $data = str_replace( '[[' . $tags[1] . ']]', '<div id="columns">' . $imageStr . '</div>', $data );
                 }
-
 
             }
         }

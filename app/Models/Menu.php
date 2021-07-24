@@ -33,4 +33,11 @@ class Menu extends Model
         return $this->hasMany( 'App\Models\Menu', 'menu' );
     }
 
+    public function getMenuListForSitemap()
+    {
+        $data = $this->where( [ 'sitename' => '5', 'status' => 'enable' ] )->orderBy( 'id', 'asc' )->get();
+
+        return $data;
+    }
+
 }
