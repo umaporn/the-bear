@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-error')
 
 @section('page-title', __('error.404.page_title'))
 @section('page-description', __('error.404.page_description'))

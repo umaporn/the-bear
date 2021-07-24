@@ -68,45 +68,51 @@ class Content extends Model
 
     public function getContentDetail( $id )
     {
-        $data = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id ] )->get();
-
-        if(isset( $data[0]->Author->image)){
-            $result = ServiceRequest::call(
-                'GET',
-                '/assets/' . $data[0]->Author->image,
-                true,
+        $data = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id, 'status' => 'enable' ] )->get();
+        $content = null;
+        if($data->isEmpty()){
+            return $content;
+        }else{
+            if(isset( $data[0]->Author->image)){
+                $result = ServiceRequest::call(
+                    'GET',
+                    '/assets/' . $data[0]->Author->image,
+                    true,
                 );
 
-            $data[0]->Author->setAttribute( 'new_image', $result );
-        }
+                $data[0]->Author->setAttribute( 'new_image', $result );
+            }
 
-        if(isset( $data[0]->Sitename->image)){
-            $result = ServiceRequest::call(
-                'GET',
-                '/assets/' . $data[0]->Sitename->image,
-                true,
+            if(isset( $data[0]->Sitename->image)){
+                $result = ServiceRequest::call(
+                    'GET',
+                    '/assets/' . $data[0]->Sitename->image,
+                    true,
                 );
 
-            $data[0]->Sitename->setAttribute( 'new_image', $result );
-        }
+                $data[0]->Sitename->setAttribute( 'new_image', $result );
+            }
 
-        if(isset( $data[0]->Sitename->vip_image)){
-            $result = ServiceRequest::call(
-                'GET',
-                '/assets/' . $data[0]->Sitename->vip_image,
-                true,
+            if(isset( $data[0]->Sitename->vip_image)){
+                $result = ServiceRequest::call(
+                    'GET',
+                    '/assets/' . $data[0]->Sitename->vip_image,
+                    true,
                 );
 
-            $data[0]->Sitename->setAttribute( 'new_vip_image', $result );
+                $data[0]->Sitename->setAttribute( 'new_vip_image', $result );
+            }
+
+            $newContent    = $this->transformContentDetail( $data[0]->content );
+            $image         = $this->getGallery( $data );
+            $menu          = $this->getMenu();
+            $menuIncontent = $this->getMenuInContent( $id );
+            $content       = [ 'data' => $data, 'image' => $image, 'menu' => $menu, 'menuInContent' => $menuIncontent, 'newContent' => $newContent ];
+
+            return $content;
         }
 
-        $newContent    = $this->transformContentDetail( $data[0]->content );
-        $image         = $this->getGallery( $data );
-        $menu          = $this->getMenu();
-        $menuIncontent = $this->getMenuInContent( $id );
-        $content       = [ 'data' => $data, 'image' => $image, 'menu' => $menu, 'menuInContent' => $menuIncontent, 'newContent' => $newContent ];
 
-        return $content;
     }
 
     public function getHeaderMenu()

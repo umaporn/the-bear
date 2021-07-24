@@ -96,6 +96,9 @@ class TravelController extends Controller
     {
         $contentDetail = $this->contentModel->getContentDetail( $id );
 
+        if($contentDetail === null){
+            abort(404);
+        }
         $mainImage    = $this->getMainImage( $contentDetail );
         $galleryImage = $this->getGalleryImage( $contentDetail );
         $moreContent  = $this->getMoreContent( $id );
