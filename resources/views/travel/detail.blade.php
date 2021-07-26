@@ -61,7 +61,7 @@
                     <h1>{{ $contentDetail['data'][0]->title }}</h1>
                     {!! $contentDetail['newContent'] !!}
                 </div>
-            </div>s
+            </div>
         </div>
 
         @include('travel.footer')
