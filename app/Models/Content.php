@@ -165,6 +165,7 @@ class Content extends Model
 
     public function getContentSearchList( Request $request )
     {
+
         $builder = $this->where( [ 'sitename' => '5', 'status' => 'enable' ] )->orderBy( 'id', 'desc' );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );

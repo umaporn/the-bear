@@ -56,7 +56,7 @@ return [
         'limitForFirstPage' => 6,
         'sortby'            => 'id',
         'direction'         => 'asc',
-        'searchFields'      => [ 'title'],
+        'searchFields'      => [ 'title_en', 'title_th', 'title_de'],
         'fulltextSearch'    => false,
     ]
 ];

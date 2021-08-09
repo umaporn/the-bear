@@ -144,7 +144,7 @@ class TravelController extends Controller
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'travel.search_list', compact( 'contentList', 'search', 'languageList' ) )->render(),
+                                         'data' => view( 'travel.search_list', compact('contentDetail', 'contentList', 'search', 'languageList' ) )->render(),
                                      ] );
         }
 
