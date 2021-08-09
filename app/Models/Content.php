@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App;
 /**
  * This class handles a press kit model.
  */
@@ -70,6 +70,11 @@ class Content extends Model
     {
         $data    = $this->with( [ 'Author', 'Gallery', 'Sitename' ] )->where( [ 'id' => $id, 'status' => 'enable' ] )->get();
         $content = null;
+
+        foreach( $data as $list ){
+            $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
+        }
+
         if( $data->isEmpty() ){
             return $content;
         } else {
@@ -124,7 +129,7 @@ class Content extends Model
 
     public function getContentList()
     {
-        $data    = $this->where( 'sitename', '5' )->orderBy( 'id', 'desc' )->limit( 6 )->get();
+        $data    = $this->where( [ 'sitename' => '5', 'status' => 'enable' ] )->orderBy( 'id', 'desc' )->limit( 6 )->get();
         $newData = $this->transformContent( $data );
 
         return $newData;
@@ -150,7 +155,7 @@ class Content extends Model
     {
         $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )
                         ->where( 'tags', 'like', "%" . $slug . "%" )
-                        ->where( 'sitename', '5' );
+                        ->where( [ 'sitename' => '5', 'status' => 'enable' ] );
 
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
@@ -160,7 +165,7 @@ class Content extends Model
 
     public function getContentSearchList( Request $request )
     {
-        $builder = $this->where( 'sitename', '5' )->orderBy( 'id', 'desc' );
+        $builder = $this->where( [ 'sitename' => '5', 'status' => 'enable' ] )->orderBy( 'id', 'desc' );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 
@@ -185,6 +190,7 @@ class Content extends Model
         $imageItem = [];
 
         $components = explode( ']]', $data );
+
 
         foreach( $components as $item ){
             $tags = explode( '[[', $item );
@@ -214,6 +220,7 @@ class Content extends Model
                 }
 
             }
+
         }
 
         $data = $this->transformImageFromBackend( $data );
@@ -367,7 +374,7 @@ class Content extends Model
 
     public function getMoreContent( $id )
     {
-        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
+        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5', 'status' => 'enable' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
 
         return $this->transformContent( $data );
     }
@@ -394,6 +401,7 @@ class Content extends Model
                 );
             }
             $list->setAttribute( 'new_main_image', $image );
+            $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
         }
 
         return $data;
@@ -476,5 +484,38 @@ class Content extends Model
         }
 
         return $menuText;
+    }
+
+    public function getLanguageList()
+    {
+        $menuList = DB::table( 'menu' )
+                      ->where( [
+                                   'sitename' => '5',
+                                   'status'   => 'enable',
+                               ] )
+                      ->groupBy( 'language' )
+                      ->orderBy( 'language', 'desc' )
+                      ->get( 'language' );
+
+        return $menuList;
+
+    }
+
+    /**
+     * Get data with language field.
+     *
+     * @param string $field Field name
+     * @param Model  $model Model
+     *
+     * @return string $data Field value
+     */
+    private function getLanguageFields( string $field, Model $model )
+    {
+        $languageFields = [ 'en' => $field . '_en', 'th' => $field . '_th', 'de' => $field . '_de' ];
+        $defaultField   = $languageFields['en'];
+        $chosenField    = $languageFields[ App::getLocale() ];
+        $data           = ( trim( $model->$chosenField ) ) ? $model->$chosenField : $model->$defaultField;
+
+        return $data;
     }
 }

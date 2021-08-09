@@ -94,7 +94,11 @@
                     @endif
                 </li>
             @endforeach
-
+            <li>
+                @foreach($languageList as $language)
+                    <a href="{{ route( 'language.change', [ 'languageCode' => strtolower($language->language) ] ) }}" style="display:inline;"><img src="{{ asset('images/flags/'.$language->language.'.png') }}" alt="{{ $language->language }}" style="width:10%" class="mr-1"/></a>
+                @endforeach
+            </li>
             <li style="border:none; bottom:0px;">
                 <form id="search-form" method="GET" action="{{ route('travel.search') }}">
                     {{ csrf_field() }}
@@ -162,7 +166,11 @@
                     @endif
                 </li>
             @endforeach
-
+            <li>
+                @foreach($languageList as $language)
+                    <a href="{{ route( 'language.change', [ 'languageCode' => strtolower($language->language) ] ) }}" style="display:inline;"><img src="{{ asset('images/flags/'.$language->language.'.png') }}" alt="{{ $language->language }}" style="width:10%" class="mr-1"/></a>
+                @endforeach
+            </li>
             <li style="border:none;">
                 <form id="search-form" method="GET" action="{{ route('travel.search') }}">
                     {{ csrf_field() }}

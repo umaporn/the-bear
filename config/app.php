@@ -85,7 +85,7 @@ return [
     'locale'         => 'en',
 
     /** All languages */
-    'language_codes' => [ 'en', 'th' ],
+    'language_codes' => [ 'en', 'th', 'de' ],
 
     /*
     |--------------------------------------------------------------------------

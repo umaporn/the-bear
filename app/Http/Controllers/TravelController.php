@@ -44,9 +44,10 @@ class TravelController extends Controller
     {
         $webStory      = $this->webStoryModel->getWebStory();
         $contentDetail = $this->contentModel->getHeaderMenu();
+        $languageList  = $this->contentModel->getLanguageList();
         $contentList   = $this->contentModel->getContentList();
 
-        return view( 'travel.index', compact( 'contentDetail', 'contentList', 'webStory' ) );
+        return view( 'travel.index', compact( 'contentDetail', 'contentList', 'webStory', 'languageList' ) );
     }
 
     /**
@@ -58,14 +59,15 @@ class TravelController extends Controller
     {
         $contentDetail = $this->contentModel->getHeaderMenu();
         $contentList   = $this->contentModel->getContentMenuList( $menuID, $request );
+        $languageList  = $this->contentModel->getLanguageList();
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'travel.menu_list', compact( 'contentList' ) )->render(),
+                                         'data' => view( 'travel.menu_list', compact( 'contentList', 'languageList' ) )->render(),
                                      ] );
         }
 
-        return view( 'travel.menu', compact( 'contentDetail', 'contentList' ) );
+        return view( 'travel.menu', compact( 'contentDetail', 'contentList', 'languageList' ) );
     }
 
     /**
@@ -77,14 +79,15 @@ class TravelController extends Controller
     {
         $contentDetail = $this->contentModel->getHeaderMenu();
         $contentList   = $this->contentModel->getContentTagsList( $slug, $request );
+        $languageList  = $this->contentModel->getLanguageList();
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'travel.tags_list', compact( 'contentList' ) )->render(),
+                                         'data' => view( 'travel.tags_list', compact( 'contentList', 'languageList' ) )->render(),
                                      ] );
         }
 
-        return view( 'travel.tags', compact( 'contentDetail', 'contentList', 'slug' ) );
+        return view( 'travel.tags', compact( 'contentDetail', 'contentList', 'slug', 'languageList' ) );
     }
 
     /**
@@ -95,6 +98,7 @@ class TravelController extends Controller
     public function detail( $id )
     {
         $contentDetail = $this->contentModel->getContentDetail( $id );
+        $languageList  = $this->contentModel->getLanguageList();
 
         if($contentDetail === null){
             abort(404);
@@ -103,7 +107,7 @@ class TravelController extends Controller
         $galleryImage = $this->getGalleryImage( $contentDetail );
         $moreContent  = $this->getMoreContent( $id );
 
-        return view( 'travel.detail', compact( 'contentDetail', 'mainImage', 'moreContent', 'galleryImage' ) );
+        return view( 'travel.detail', compact( 'contentDetail', 'mainImage', 'moreContent', 'galleryImage', 'languageList' ) );
     }
 
     private function getMainImage( $contentDetail )
@@ -133,17 +137,18 @@ class TravelController extends Controller
 
     public function search( Request $request )
     {
-        $contentDetail = $this->contentModel->getHeaderMenu();
         $contentList   = $this->contentModel->getContentSearchList( $request );
         $search        = $request->input( 'search' );
+        $languageList  = $this->contentModel->getLanguageList();
+        $contentDetail = $this->contentModel->getHeaderMenu();
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'travel.search_list', compact( 'contentList', 'search' ) )->render(),
+                                         'data' => view( 'travel.search_list', compact( 'contentList', 'search', 'languageList' ) )->render(),
                                      ] );
         }
 
-        return view( 'travel.search', compact( 'contentDetail', 'contentList', 'search' ) );
+        return view( 'travel.search', compact( 'contentDetail', 'contentList', 'search', 'languageList' ) );
 
     }
 }
