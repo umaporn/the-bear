@@ -31,6 +31,7 @@
 </head>
 <body>
 {!! $gtmBodyTags[0]->body_code !!}
+
 @include('layouts.header')
 @include('layouts.content')
 @include('layouts.footer')

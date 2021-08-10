@@ -490,16 +490,19 @@ class Content extends Model
 
     public function getLanguageList()
     {
-        $menuList = DB::table( 'menu' )
-                      ->where( [
-                                   'sitename' => '5',
-                                   'status'   => 'enable',
-                               ] )
-                      ->groupBy( 'language' )
-                      ->orderBy( 'language', 'desc' )
-                      ->get( 'language' );
+        $language     = [];
+        $languageList = DB::table( 'sitename' )
+                          ->where( [
+                                       'id' => '5',
+                                   ] )
+                          ->get( 'languages' );
 
-        return $menuList;
+        if( $languageList ){
+            $language = $languageList[0]->languages;
+            $language = json_decode( $language );
+        }
+
+        return $language;
 
     }
 
