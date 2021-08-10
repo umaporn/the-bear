@@ -32,9 +32,9 @@
                         </small>
                     </div>
                     <div class="col-sm footer-list last-menu d-block d-sm-none pb-2">
-                        <a href="#" class="pr-2">Contact</a>
-                        <a href="#" class="pr-2">Work with us</a>
-                        <a href="#" class="pr-2">Legal</a>
+                        @foreach($footerMenu as $item )
+                            <a href="{{ $item->url }}" class="pr-2" target="_blank">{{ $item->name }}</a>
+                        @endforeach
                     </div>
                     <div class="col-sm">
                         <div class="row icon-center-social">
