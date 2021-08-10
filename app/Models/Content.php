@@ -293,10 +293,12 @@ class Content extends Model
                        ->orderBy( 'sort_id', 'asc' )
                        ->get();
 
+        $string = 'menu_name_'.App::getLocale();
+
         foreach( $menuFirst as $menuFirstItem ){
             $id            = $menuFirstItem->id;
             $sortID        = $menuFirstItem->sort_id;
-            $menuNameFirst = $menuFirstItem->menu_name;
+            $menuNameFirst = $menuFirstItem->$string;
 
             $menuSecond = DB::table( 'menu' )
                             ->where( [
@@ -311,7 +313,7 @@ class Content extends Model
             foreach( $menuSecond as $menuSecondItem ){
                 $secondID       = $menuSecondItem->id;
                 $secondSortID   = $menuSecondItem->sort_id;
-                $menuNameSecond = $menuSecondItem->menu_name;
+                $menuNameSecond = $menuSecondItem->$string;
 
                 $menuThird = DB::table( 'menu' )
                                ->where( [
@@ -327,7 +329,7 @@ class Content extends Model
 
                     $thirdID       = $menuThirdItem->id;
                     $thirdSortID   = $menuThirdItem->sort_id;
-                    $menuNameThird = $menuThirdItem->menu_name;
+                    $menuNameThird = $menuThirdItem->$string;
 
                     array_push( $menuThirdText, [
                         'id'       => $thirdID,
@@ -416,6 +418,8 @@ class Content extends Model
         $menuSecondText = [];
         $menuThirdText  = [];
 
+        $string = 'menu_name_'.App::getLocale();
+
         $menuFirst = DB::table( 'menu' )
                        ->where( [
                                     'language' => 'EN',
@@ -429,7 +433,7 @@ class Content extends Model
         foreach( $menuFirst as $menuFirstItem ){
             $id            = $menuFirstItem->id;
             $sortID        = $menuFirstItem->sort_id;
-            $menuNameFirst = $menuFirstItem->menu_name;
+            $menuNameFirst = $menuFirstItem->$string;
 
             $menuSecond = DB::table( 'menu' )
                             ->where( [
@@ -444,7 +448,7 @@ class Content extends Model
             foreach( $menuSecond as $menuSecondItem ){
                 $secondID       = $menuSecondItem->id;
                 $secondSortID   = $menuSecondItem->sort_id;
-                $menuNameSecond = $menuSecondItem->menu_name;
+                $menuNameSecond = $menuSecondItem->$string;
 
                 $menuThird = DB::table( 'menu' )
                                ->where( [
@@ -460,7 +464,7 @@ class Content extends Model
 
                     $thirdID       = $menuThirdItem->id;
                     $thirdSortID   = $menuThirdItem->sort_id;
-                    $menuNameThird = $menuThirdItem->menu_name;
+                    $menuNameThird = $menuThirdItem->$string;
 
                     array_push( $menuThirdText, [
                         'id'       => $thirdID,
