@@ -73,6 +73,7 @@ class Content extends Model
 
         foreach( $data as $list ){
             $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'content', $this->getLanguageFields( 'content', $list ) );
         }
 
         if( $data->isEmpty() ){
