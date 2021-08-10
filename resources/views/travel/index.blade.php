@@ -24,7 +24,7 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : ''}} ">
                         <img class="d-block w-100" src="data:image/png;base64,{{ $storyItem->new_main_image }}" alt="{{ $storyItem->name }}">
                         <div class="carousel-caption float-right">
-                            <a href="{{ route('travel.detail', ['id' => $storyItem['content'][0]->id, 'slug' => str_replace(' ', '-', $storyItem['content'][0]->title ) ]) }}" class="detail-link">{{ $storyItem->name }}
+                            <a href="{{ route('travel.detail', ['id' => $storyItem['content'][0]->id, 'slug' => str_replace(' ', '-', $storyItem->title ) ]) }}" class="detail-link">{{ $storyItem->name }}
                                 >> </a>
                         </div>
                     </div>

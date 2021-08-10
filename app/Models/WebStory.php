@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App;
 
 /**
  * This class handles a webstory model.
@@ -55,7 +56,25 @@ class Webstory extends Model
                 );
 
             $list->setAttribute( 'new_main_image', $image );
+            $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list['content'][0]) );
         }
+        return $data;
+    }
+
+    /**
+     * Get data with language field.
+     *
+     * @param string $field Field name
+     * @param Model  $model Model
+     *
+     * @return string $data Field value
+     */
+    private function getLanguageFields( string $field, Model $model )
+    {
+        $languageFields = [ 'en' => $field . '_en', 'th' => $field . '_th', 'de' => $field . '_de' ];
+        $defaultField   = $languageFields['en'];
+        $chosenField    = $languageFields[ App::getLocale() ];
+        $data           = ( trim( $model->$chosenField ) ) ? $model->$chosenField : $model->$defaultField;
 
         return $data;
     }
