@@ -74,6 +74,13 @@ class Content extends Model
         foreach( $data as $list ){
             $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'content', $this->getLanguageFields( 'content', $list ) );
+            $list['Author']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Author'] ) );
+            $list['Sitename']->setAttribute( 'title', $this->getLanguageFields( 'title', $list['Sitename'] ) );
+            $list['Sitename']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Sitename'] ) );
+            $list['Sitename']->setAttribute( 'vip_title1', $this->getLanguageFields( 'vip_title1', $list['Sitename'] ) );
+            $list['Sitename']->setAttribute( 'vip_title2', $this->getLanguageFields( 'vip_title2', $list['Sitename'] ) );
+            $list['Sitename']->setAttribute( 'vip_title3', $this->getLanguageFields( 'vip_title3', $list['Sitename'] ) );
+            $list['Sitename']->setAttribute( 'vip_longtext', $this->getLanguageFields( 'vip_longtext', $list['Sitename'] ) );
         }
 
         if( $data->isEmpty() ){
