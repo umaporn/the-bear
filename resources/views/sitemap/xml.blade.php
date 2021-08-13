@@ -15,7 +15,7 @@
 
     @foreach ( $contentList as $content )
         <url>
-            <loc>{{ config('app.url') . '/' . $content->id . '/' . str_replace(' ', '-', $content->title ) }}</loc>
+            <loc>{{ config('app.url') . '/' . $content->id . '/' . str_replace(' ', '-', $content->title_en ) }}</loc>
             <lastmod>2021-07-03T04:08:51+00:00</lastmod>
             <priority>0.51</priority>
         </url>
