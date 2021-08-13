@@ -22,7 +22,6 @@
             'currentLanguage' => App::getLocale(),
         ]) !!};
     </script>
-    <script type="text/javascript" src="https://unpkg.com/@passbase/button@v3/button.js"></script>
     {!! $gtmHeaderTags[0]->header_code !!}
 
     <script src="{{ mix('/js/app.js') }}"></script>

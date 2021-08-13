@@ -1,0 +1,10 @@
+{
+  "utility.error": "Error!",
+  "utility.calling_system_administrator": "Please contact the system administrator.",
+  "utility.error_url": "Error URL:",
+  "utility.error_status_code": "Error status code:",
+  "utility.error_status_text": "Error status text:",
+  "utility.result.success": "Result",
+  "utility.result.error": "Error!",
+  "utility.json_response_error": "The data type is not JSON."
+}
