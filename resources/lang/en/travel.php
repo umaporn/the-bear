@@ -21,7 +21,7 @@ return [
 
     'page_description' => [
         'index'  => 'The bear travel',
-        'detail' => 'The bear travel :travel_description',
+        'detail' => ':travel_description',
         'menu'   => 'The bear travel | :menu_title',
     ],
 

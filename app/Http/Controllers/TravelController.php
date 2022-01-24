@@ -61,6 +61,9 @@ class TravelController extends Controller
         $contentList   = $this->contentModel->getContentMenuList( $menuID, $request );
         $languageList  = $this->contentModel->getLanguageList();
 
+        if($contentList->total() ===  0){
+            abort(404);
+        }
         if( $request->ajax() ){
             return response()->json( [
                                          'data' => view( 'travel.menu_list', compact( 'contentList', 'languageList' ) )->render(),

@@ -28,7 +28,7 @@
                 <div class="row footer-row pb-2">
                     <div class="col-sm icon-center d-none d-sm-block">
                         <small>
-                            © Copyright 2017-2021. All Rights Reserved
+                            Copyright © The Bear Group {{ date('Y') }}. All rights reserved.
                         </small>
                     </div>
                     <div class="col-sm footer-list last-menu d-block d-sm-none pb-2">
