@@ -74,6 +74,7 @@ class Content extends Model
         foreach( $data as $list ){
             $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'content', $this->getLanguageFields( 'content', $list ) );
+            $list->setAttribute( 'description', $this->getLanguageFields( 'description', $list ) );
             $list['Author']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Author'] ) );
             $list['Sitename']->setAttribute( 'title', $this->getLanguageFields( 'title', $list['Sitename'] ) );
             $list['Sitename']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Sitename'] ) );

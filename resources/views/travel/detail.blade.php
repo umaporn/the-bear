@@ -4,7 +4,7 @@
             'travel_title' => isset($contentDetail['data'][0]->title) ? $contentDetail['data'][0]->title : '',
         ]))
 @section('page-description', __('travel.page_description.detail', [
-            'travel_description' =>isset($contentDetail['data'][0]->description_en) ? $contentDetail['data'][0]->description_en : '' ,
+            'travel_description' =>isset($contentDetail['data'][0]->description) ? $contentDetail['data'][0]->description : '' ,
         ]))
 @section('page-keyword', __('travel.page_keyword.detail',[
             'travel_keyword' => isset($contentDetail['data'][0]->keyword) ? $contentDetail['data'][0]->description : '',
