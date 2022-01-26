@@ -10,7 +10,7 @@
             'travel_keyword' => isset($contentDetail['data'][0]->keyword) ? $contentDetail['data'][0]->description : '',
         ]))
 
-@section('og-image', 'data:image/png;base64,'.$mainImage)
+@section('og-image', env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $contentDetail['data'][0]->main_image )
 @section('og-title', __('travel.og_title.detail', [
             'travel_title' => isset($contentDetail['data'][0]->title) ? $contentDetail['data'][0]->title : '',
         ] ))
@@ -31,7 +31,7 @@
 
     <div class="container pt-1">
         <div>
-            <img src="data:image/png;base64,{{ $mainImage }}" class="w-100" alt="">
+            <img src="{{ env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $contentDetail['data'][0]->main_image }}" class="w-100" alt="{{$contentDetail['data'][0]->title . $contentDetail['data'][0]->id}}">
         </div>
         <div class="container content-detail-660 pt-2" style="margin-top:30px">
             <div class="row pt-2">
