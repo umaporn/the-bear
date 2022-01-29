@@ -270,12 +270,12 @@ class Content extends Model
         $imageStrInfo = '';
         foreach( $imageData as $imageItem ){
             $imageStr = '<figure>';
-            $image    = ServiceRequest::call( 'GET',
+            /*$image    = ServiceRequest::call( 'GET',
                                               '/assets/' . $imageItem->image,
-                                              true, );
-            $imageStr .= '<a href="data:image/png;base64,' . $image . '"
+                                              true, );*/
+            $imageStr .= '<a href="' . env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $imageItem->image . '"
                                class="gallery-pic" data-fancybox="gallery-units"
-                               data-caption="' . $imageItem->description . '"><img src="data:image/png;base64,' . $image . '"
+                               data-caption="' . $imageItem->description . '"><img src="' . env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $imageItem->image . '"
                                      alt="' . $imageItem->alt_tag . '" title="' . $imageItem->alt_tag . '"></a>';
 
             $imageStr .= '</figure>';
