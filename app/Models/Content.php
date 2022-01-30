@@ -243,7 +243,7 @@ class Content extends Model
         $imageStr   = '';
         $components = explode( 'http://desk.thebear.group:8055/assets/', $data );
 
-        foreach( $components as $key => $items ){
+        /*foreach( $components as $key => $items ){
             if( $key > 0 ){
                 $item = substr( $items, 0, 36 );
 
@@ -254,13 +254,13 @@ class Content extends Model
                         true,
                 );
 
-                    $imageStr = 'data:image/png;base64,' . $result . '';
+                    $imageStr = env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $item;
                     $data     = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
                 }
 
             }
 
-        }
+        }*/
 
         return $data;
     }
