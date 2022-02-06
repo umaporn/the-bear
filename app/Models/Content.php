@@ -75,6 +75,7 @@ class Content extends Model
             $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'content', $this->getLanguageFields( 'content', $list ) );
             $list->setAttribute( 'description', $this->getLanguageFields( 'description', $list ) );
+            $list->setAttribute( 'keyword', $this->getLanguageFields( 'keyword', $list ) );
             $list['Author']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Author'] ) );
             $list['Sitename']->setAttribute( 'title', $this->getLanguageFields( 'title', $list['Sitename'] ) );
             $list['Sitename']->setAttribute( 'longtext', $this->getLanguageFields( 'longtext', $list['Sitename'] ) );
@@ -153,7 +154,7 @@ class Content extends Model
 
     public function getContentMenuList( $menuID, Request $request )
     {
-        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( [ 'menu' => $menuID, 'sitename' => '5' ] );
+        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( [ 'menu' => $menuID, 'sitename' => '5', 'status' => 'enable' ] );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 

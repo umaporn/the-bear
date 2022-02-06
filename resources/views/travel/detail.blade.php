@@ -7,7 +7,7 @@
             'travel_description' =>isset($contentDetail['data'][0]->description) ? $contentDetail['data'][0]->description : '' ,
         ]))
 @section('page-keyword', __('travel.page_keyword.detail',[
-            'travel_keyword' => isset($contentDetail['data'][0]->keyword) ? $contentDetail['data'][0]->description : '',
+            'travel_keyword' => isset($contentDetail['data'][0]->keyword) ? $contentDetail['data'][0]->keyword : '',
         ]))
 
 @section('og-image', env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $contentDetail['data'][0]->main_image )
@@ -15,7 +15,7 @@
             'travel_title' => isset($contentDetail['data'][0]->title) ? $contentDetail['data'][0]->title : '',
         ] ))
 @section('og-description', __('travel.og_description.detail', [
-            'travel_description' => isset( $contentDetail['data'][0]->description_en ) ? $contentDetail['data'][0]->description_en : '',
+            'travel_description' => isset( $contentDetail['data'][0]->description ) ? $contentDetail['data'][0]->description : '',
         ] ))
 @section('og-keyword', __('travel.og_keyword.detail',[
             'travel_keyword' => isset( $contentDetail['data'][0]->keyword ) ? $contentDetail['data'][0]->keyword : '',

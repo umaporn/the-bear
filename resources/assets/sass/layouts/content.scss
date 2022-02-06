@@ -84,6 +84,10 @@
             background-color: transparent;
         }
     }
+    .new-content > p > span > a{
+        color: #57bd37;
+        text-decoration: underline;
+    }
 }
 
 body {
@@ -374,6 +378,6 @@ input.form-control, textarea.form-control {
 }
 
 .new-content > p > span > a{
-    color: #666;
+    color: #57bd37;
     text-decoration: underline;
 }
