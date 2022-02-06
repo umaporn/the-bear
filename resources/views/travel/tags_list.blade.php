@@ -2,7 +2,7 @@
     @forelse($contentList as $list )
         <div class="col-12 col-sm-4 pb-3">
             @if( isset( $list->new_main_image ) )
-                <a href="{{ route('travel.detail', ['id' => $list->id, 'slug' => $list->title ]) }}">
+                <a href="{{ route('travel.detail', ['id' => $list->id, 'slug' => str_replace(' ', '-', $list->title )]) }}">
                     <div class="img-thumb">
                         <img src="data:image/png;base64,{{ $list->new_main_image }}"
                              alt="{{ $list->title }}" title="{{ $list->title }}" class="cover">
