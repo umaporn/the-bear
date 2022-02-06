@@ -60,7 +60,7 @@ class TravelController extends Controller
         $contentDetail = $this->contentModel->getHeaderMenu();
         $contentList   = $this->contentModel->getContentMenuList( $menuID, $request );
         $languageList  = $this->contentModel->getLanguageList();
-        dd($contentList);
+
         if($contentList->total() ===  0){
             abort(404);
         }

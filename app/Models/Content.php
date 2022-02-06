@@ -154,7 +154,7 @@ class Content extends Model
 
     public function getContentMenuList( $menuID, Request $request )
     {
-        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( [ 'menu' => $menuID, 'sitename' => '5', 'status' => 'disable' ] );
+        $builder = $this->with( [ 'Menu' ] )->orderBy( 'id', 'desc' )->where( [ 'menu' => $menuID, 'sitename' => '5', 'status' => 'enable' ] );
         $data    = Search::search( $builder, 'content', $request );
         $newData = $this->transformContent( $data );
 
