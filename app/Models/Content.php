@@ -244,7 +244,7 @@ class Content extends Model
         $imageStr   = '';
         $components = explode( 'http://desk.thebear.group:8055/assets/', $data );
 
-        foreach( $components as $key => $items ){
+        /*foreach( $components as $key => $items ){
             if( $key > 0 ){
                 $item = substr( $items, 0, 36 );
 
@@ -261,6 +261,23 @@ class Content extends Model
 
             }
 
+        }*/
+        foreach( $components as $key => $items ){
+            if( $key > 0 ){
+                $item = substr( $items, 0, 36 );
+
+                if( isset( $item ) ){
+                    $result = ServiceRequest::call(
+                        'GET',
+                        '/assets/' . $item,
+                        true,
+                );
+
+                    $imageStr = 'data:image/png;base64,' . $result . '';
+                    $data     = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
+                }
+
+            }
         }
 
         return $data;
