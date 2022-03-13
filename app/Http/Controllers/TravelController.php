@@ -115,9 +115,11 @@ class TravelController extends Controller
 
     private function getMainImage( $contentDetail )
     {
-        return ServiceRequest::call( 'GET',
+        /*return ServiceRequest::call( 'GET',
                                      '/assets/' . $contentDetail['data'][0]->main_image,
-                                     true, );
+                                     true, );*/
+
+        return $contentDetail['data'][0]->main_image . '.jpeg';
     }
 
     private function getGalleryImage( $contentDetail )

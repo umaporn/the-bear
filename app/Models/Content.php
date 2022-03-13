@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App;
+
 /**
  * This class handles a press kit model.
  */
@@ -202,7 +203,6 @@ class Content extends Model
 
         $components = explode( ']]', $data );
 
-
         foreach( $components as $item ){
             $tags = explode( '[[', $item );
 
@@ -273,8 +273,15 @@ class Content extends Model
                         true,
                 );
 
-                    $imageStr = 'data:image/png;base64,' . $result . '';
-                    $data     = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
+                    $imageStr = env( 'IMAGE_URL' ) . $item . '.jpeg';
+
+                    if(@is_array(getimagesize($imageStr))){
+                        $imageStr = env( 'IMAGE_URL' ) . $item . '.jpeg';
+                    } else {
+                        $imageStr = env( 'IMAGE_URL' ) . $item . '.png';
+                    }
+
+                    $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
                 }
 
             }
@@ -291,9 +298,9 @@ class Content extends Model
             /*$image    = ServiceRequest::call( 'GET',
                                               '/assets/' . $imageItem->image,
                                               true, );*/
-            $imageStr .= '<a href="' . env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $imageItem->image . '"
+            $imageStr .= '<a href="' . env( 'IMAGE_URL' ) . $imageItem->image . '.jpeg' . '"
                                class="gallery-pic" data-fancybox="gallery-units"
-                               data-caption="' . $imageItem->description . '"><img src="' . env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $imageItem->image . '"
+                               data-caption="' . $imageItem->description . '"><img src="' . env( 'IMAGE_URL' ) . $imageItem->image . '.jpeg' . '"
                                      alt="' . $imageItem->alt_tag . '" title="' . $imageItem->alt_tag . '"></a>';
 
             $imageStr .= '</figure>';
@@ -319,7 +326,7 @@ class Content extends Model
                        ->orderBy( 'sort_id', 'asc' )
                        ->get();
 
-        $string = 'menu_name_'.App::getLocale();
+        $string = 'menu_name_' . App::getLocale();
 
         foreach( $menuFirst as $menuFirstItem ){
             $id            = $menuFirstItem->id;
@@ -424,11 +431,17 @@ class Content extends Model
             $image = null;
 
             if( $list->main_image !== null ){
-                $image = ServiceRequest::call(
+                /*$image = ServiceRequest::call(
                     'GET',
                     '/assets/' . $list->main_image,
                     true,
-                );
+                );*/
+                $image = env('IMAGE_URL') . $list->main_image . '.jpeg';
+                if(@is_array(getimagesize($image))){
+                    $image = env( 'IMAGE_URL' ) . $list->main_image . '.jpeg';
+                } else {
+                    $image = env( 'IMAGE_URL' ) . $list->main_image . '.png';
+                }
             }
             $list->setAttribute( 'new_main_image', $image );
             $list->setAttribute( 'title', $this->getLanguageFields( 'title', $list ) );
@@ -444,7 +457,7 @@ class Content extends Model
         $menuSecondText = [];
         $menuThirdText  = [];
 
-        $string = 'menu_name_'.App::getLocale();
+        $string = 'menu_name_' . App::getLocale();
 
         $menuFirst = DB::table( 'menu' )
                        ->where( [

@@ -4,7 +4,7 @@
             @if( isset( $list->new_main_image ) )
                 <a href="{{ route('travel.detail', ['id' => $list->id, 'slug' => str_replace(' ', '-', $list->title )]) }}">
                     <div class="img-thumb">
-                        <img src="data:image/png;base64,{{ $list->new_main_image }}"
+                        <img src="{{ $list->new_main_image }}"
                              alt="{{ $list->title }}" title="{{ $list->title }}" class="cover">
                     </div>
                 </a>
