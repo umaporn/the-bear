@@ -10,7 +10,7 @@
             'travel_keyword' => isset($contentDetail['data'][0]->keyword) ? $contentDetail['data'][0]->keyword : '',
         ]))
 
-@section('og-image', env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $contentDetail['data'][0]->main_image )
+@section('og-image', env('IMAGE_URL') . $mainImage  )
 @section('og-title', __('travel.og_title.detail', [
             'travel_title' => isset($contentDetail['data'][0]->title) ? $contentDetail['data'][0]->title : '',
         ] ))
