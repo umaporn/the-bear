@@ -87,6 +87,8 @@
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     <IfModule mod_headers.c>
-        Header append Cache-Control "public"
+      <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff|woff2)$">
+        Header set Access-Control-Allow-Origin "*"
+      </FilesMatch>
     </IfModule>
 </IfModule>
