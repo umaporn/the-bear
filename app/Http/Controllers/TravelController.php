@@ -47,7 +47,7 @@ class TravelController extends Controller
         $languageList  = $this->contentModel->getLanguageList();
         $contentList   = $this->contentModel->getContentList();
 
-        return view( 'travel.index', compact( 'contentDetail', 'contentList', 'webStory', 'languageList' ) )->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+        return view( 'travel.index', compact( 'contentDetail', 'contentList', 'webStory', 'languageList' ) );
     }
 
     /**
