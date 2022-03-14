@@ -86,4 +86,7 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    <IfModule mod_headers.c>
+        Header append Cache-Control "public"
+    </IfModule>
 </IfModule>
