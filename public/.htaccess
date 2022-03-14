@@ -20,7 +20,7 @@
 
     # 1 MIN
     <FilesMatch "\.(html|htm|php)$">
-    Header set Cache-Control "max-age=60, private, proxy-revalidate"
+    Header set Cache-Control "max-age=29030400, private, proxy-revalidate"
     </FilesMatch>
 
    ## EXPIRES CACHING ##
