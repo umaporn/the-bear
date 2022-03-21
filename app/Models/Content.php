@@ -411,7 +411,7 @@ class Content extends Model
 
     public function getMoreContent( $id )
     {
-        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5', 'status' => 'enable' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
+        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5', 'status' => 'enable' ] )->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
 
         return $this->transformContent( $data );
     }
