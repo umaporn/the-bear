@@ -273,12 +273,12 @@ class Content extends Model
                         true,
                 );
 
-                    $imageStr = env( 'IMAGE_URL' ) . $item . '.jpeg';
+                    $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.jpeg';
 
                     if(@is_array(getimagesize($imageStr))){
-                        $imageStr = env( 'IMAGE_URL' ) . $item . '.jpeg';
+                        $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.jpeg';
                     } else {
-                        $imageStr = env( 'IMAGE_URL' ) . $item . '.png';
+                        $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.png';
                     }
 
                     $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
@@ -295,12 +295,9 @@ class Content extends Model
         $imageStrInfo = '';
         foreach( $imageData as $imageItem ){
             $imageStr = '<figure>';
-            /*$image    = ServiceRequest::call( 'GET',
-                                              '/assets/' . $imageItem->image,
-                                              true, );*/
-            $imageStr .= '<a href="' . env( 'IMAGE_URL' ) . $imageItem->image . '.jpeg' . '"
+            $imageStr .= '<a href="' . env( 'IMAGE_GALLERY_URL' ) . $imageItem->image . '.jpeg' . '"
                                class="gallery-pic" data-fancybox="gallery-units"
-                               data-caption="' . $imageItem->description . '"><img src="' . env( 'IMAGE_URL' ) . $imageItem->image . '.jpeg' . '"
+                               data-caption="' . $imageItem->description . '"><img class="lazy" src="' . env( 'IMAGE_THUMBNAIL_URL' ) . $imageItem->image . '.jpeg' . '"
                                      alt="' . $imageItem->alt_tag . '" title="' . $imageItem->alt_tag . '"></a>';
 
             $imageStr .= '</figure>';

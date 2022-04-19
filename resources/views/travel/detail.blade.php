@@ -33,7 +33,7 @@
         <div>
             {{--<img src="{{ env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $contentDetail['data'][0]->main_image }}" class="w-100" alt="{{$contentDetail['data'][0]->title . $contentDetail['data'][0]->id}}">--}}
 
-            <img src="{{ env('IMAGE_URL') . $mainImage }}" class="w-100" alt="">
+            <img data-src="{{ env('IMAGE_BANNER_URL') . $mainImage }}" src="{{ env('IMAGE_BANNER_URL') . $mainImage }}" class="w-100 lazy" alt="">
         </div>
         <div class="container content-detail-660 pt-2" style="margin-top:30px">
             <div class="row pt-2">

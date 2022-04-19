@@ -29,6 +29,15 @@
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="{{ mix('/js/all.js') }}"></script>
     @yield('autopilot-script')
+    <script
+            async
+            src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.6.1/dist/lazyload.min.js"
+    ></script>
+    <script>
+		window.lazyLoadOptions = {
+			elements_selector: '.lazy'
+		}
+    </script>
 </head>
 <body>
 {!! $gtmBodyTags[0]->body_code !!}
