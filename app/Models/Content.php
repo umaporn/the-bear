@@ -408,9 +408,9 @@ class Content extends Model
 
     public function getMoreContent( $id )
     {
-        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5', 'status' => 'enable' ] )->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
+        $data = $this->with( [ 'Author' ] )->where( [ 'sitename' => '5', 'status' => 'enable' ] )->inRandomOrder()->whereNotIn( 'id', [ $id ] )->take( 6 )->get();
 
-        return $this->transformContent( $data );
+        return $this->transformContent( $data, 'yes' );
     }
 
     /**
@@ -420,8 +420,14 @@ class Content extends Model
      *
      * @return LengthAwarePaginator Home news list for display
      */
-    private function transformContent( $data )
+    private function transformContent( $data, string $isMore = '' )
     {
+
+        if( $isMore === 'yes' ){
+            $imagePath = env('IMAGE_MORE_URL');
+        }else{
+            $imagePath = env('IMAGE_CONTENT_URL');
+        }
 
         foreach( $data as $list ){
 
@@ -433,11 +439,11 @@ class Content extends Model
                     '/assets/' . $list->main_image,
                     true,
                 );*/
-                $image = env('IMAGE_URL') . $list->main_image . '.jpeg';
+                $image = $imagePath . $list->main_image . '.jpeg';
                 if(@is_array(getimagesize($image))){
-                    $image = env( 'IMAGE_URL' ) . $list->main_image . '.jpeg';
+                    $image = $imagePath . $list->main_image . '.jpeg';
                 } else {
-                    $image = env( 'IMAGE_URL' ) . $list->main_image . '.png';
+                    $image = $imagePath . $list->main_image . '.png';
                 }
             }
             $list->setAttribute( 'new_main_image', $image );

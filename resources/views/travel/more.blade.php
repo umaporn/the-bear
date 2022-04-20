@@ -23,7 +23,7 @@
                                 <div class="col-md-4" style="padding:0px">
                                     @if($moreItem->new_main_image)
                                         <div class="img-thumb">
-                                            <img src="{{ env('IMAGE_MORE_URL') . $moreItem->new_main_image }}" class="cover">
+                                            <img src="{{ $moreItem->new_main_image }}" class="cover">
                                         </div>
                                     @else
                                         <div class="img-thumb">

@@ -29,5 +29,5 @@ $( document )
         PasswordToggle.initialize();
         SkinToggle.initialize();
         Fonts.initialize();
-        LazyLoad.initialize();
+        LazyLoaded.initialize();
     } );
