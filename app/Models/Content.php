@@ -262,6 +262,8 @@ class Content extends Model
             }
 
         }*/
+
+
         foreach( $components as $key => $items ){
             if( $key > 0 ){
                 $item = substr( $items, 0, 36 );
@@ -277,17 +279,49 @@ class Content extends Model
 
                     if(@is_array(getimagesize($imageStr))){
                         $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.jpeg';
+                        $imageStrPopUp =  env( 'IMAGE_POPUP_URL' ) . $item . '.jpeg';
                     } else {
                         $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.png';
+                        $imageStrPopUp =  env( 'IMAGE_POPUP_URL' ) . $item . '.png';
                     }
 
+                    /*$data = str_replace( '<img src="' . $item, '<figure><a href="' . $imageStr . '"
+                               class="gallery-pic" data-fancybox="gallery-units"> <img src=" ', $data );
+                    $data = str_replace( 'height="100%" /></p>"' . $item, 'height="100%" /></figure></p>', $data );*/
+                    $pos = strpos($data, 'height="50"');
+
+                    if($pos){
+                        $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, env( 'IMAGE_MORE_URL' ) . $item . '.png', $data );
+                    }
+                    $data = str_replace( '<img src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
+                               class="gallery-pic" data-fancybox="gallery-units"><img src="' . $imageStr, $data );
+
+                    $data = str_replace( '<img style="font-family: Roboto, sans-serif;" src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
+                               class="gallery-pic" data-fancybox="gallery-units"><img src="' . $imageStr, $data );
+
                     $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
+
+                    $data = $this->replacePopup($data, $imageStr);
                 }
 
             }
         }
 
+
+
         return $data;
+    }
+
+    private function replacePopup( $data, $imageStr )
+    {
+
+        $data = str_replace( 'height="100%" />', 'height="100%"></figure></a>', $data );
+        $data = str_replace( 'height="65">', 'height="100%"></figure></a>', $data );
+        $data = str_replace( 'height="65" />', 'height="100%"></figure></a>', $data );
+        $data = str_replace( 'height="100%">', 'height="100%"></figure></a>', $data );
+
+        return $data;
+
     }
 
     private function getImage( $imageData )
