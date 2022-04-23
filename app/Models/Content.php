@@ -244,57 +244,31 @@ class Content extends Model
         $imageStr   = '';
         $components = explode( 'http://desk.thebear.group:8055/assets/', $data );
 
-        /*foreach( $components as $key => $items ){
-            if( $key > 0 ){
-                $item = substr( $items, 0, 36 );
-
-                if( isset( $item ) ){
-                    $result = ServiceRequest::call(
-                        'GET',
-                        '/assets/' . $item,
-                        true,
-                );
-
-                    $imageStr = env('SERVICE_OAUTH_BASE_URI') . 'assets/' . $item;
-                    $data     = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
-                }
-
-            }
-
-        }*/
-
-
         foreach( $components as $key => $items ){
             if( $key > 0 ){
                 $item = substr( $items, 0, 36 );
 
                 if( isset( $item ) ){
-                    $result = ServiceRequest::call(
-                        'GET',
-                        '/assets/' . $item,
-                        true,
-                );
 
                     $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.jpeg';
 
                     if(@is_array(getimagesize($imageStr))){
                         $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.jpeg';
                         $imageStrPopUp =  env( 'IMAGE_POPUP_URL' ) . $item . '.jpeg';
+
                     } else {
+
+                        /*if(str_contains( $data, "https://directus-deskthebear.s3.ap-southeast-1.amazonaws.com/uploads/c949b886-e481-4f70-a70f-98a03e652e2b.png")){
+                            $imageStr = env( 'IMAGE_CONTENT_SQUARE_URL' ) . $item . '.png';
+                            $imageStrPopUp =  env( 'IMAGE_CONTENT_SQUARE_URL' ) . $item . '.png';
+                        }*/
                         $imageStr = env( 'IMAGE_CONTENT_URL' ) . $item . '.png';
                         $imageStrPopUp =  env( 'IMAGE_POPUP_URL' ) . $item . '.png';
+
                     }
 
-                    /*$data = str_replace( '<img src="' . $item, '<figure><a href="' . $imageStr . '"
-                               class="gallery-pic" data-fancybox="gallery-units"> <img src=" ', $data );
-                    $data = str_replace( 'height="100%" /></p>"' . $item, 'height="100%" /></figure></p>', $data );*/
-                    $pos = strpos($data, 'height="50"');
-
-                    if($pos){
-                        $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, env( 'IMAGE_MORE_URL' ) . $item . '.png', $data );
-                    }
                     $data = str_replace( '<img src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
-                               class="gallery-pic" data-fancybox="gallery-units"><img src="' . $imageStr, $data );
+                               data-fancybox="gallery-units"><img src="' . $imageStr, $data );
 
                     $data = str_replace( '<img style="font-family: Roboto, sans-serif;" src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
                                class="gallery-pic" data-fancybox="gallery-units"><img src="' . $imageStr, $data );
@@ -303,11 +277,8 @@ class Content extends Model
 
                     $data = $this->replacePopup($data, $imageStr);
                 }
-
             }
         }
-
-
 
         return $data;
     }
@@ -316,9 +287,10 @@ class Content extends Model
     {
 
         $data = str_replace( 'height="100%" />', 'height="100%"></figure></a>', $data );
-        $data = str_replace( 'height="65">', 'height="100%"></figure></a>', $data );
-        $data = str_replace( 'height="65" />', 'height="100%"></figure></a>', $data );
+        $data = str_replace( 'height="65">', 'height="65"></figure></a>', $data );
+        $data = str_replace( 'height="65" />', 'height="65"></figure></a>', $data );
         $data = str_replace( 'height="100%">', 'height="100%"></figure></a>', $data );
+        $data = str_replace( 'height="50"/>', ' height="50"/></figure></a>', $data );
 
         return $data;
 
