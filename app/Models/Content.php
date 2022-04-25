@@ -266,16 +266,15 @@ class Content extends Model
                         $imageStrPopUp =  env( 'IMAGE_POPUP_URL' ) . $item . '.png';
 
                     }
-
-                    $data = str_replace( '<img src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
+                    /*$data = str_replace( '<img src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
                                data-fancybox="gallery-units"><img src="' . $imageStr, $data );
 
                     $data = str_replace( '<img style="font-family: Roboto, sans-serif;" src="http://desk.thebear.group:8055/assets/' . $item , '<figure><a href="'.$imageStrPopUp.'"
                                class="gallery-pic" data-fancybox="gallery-units"><img src="' . $imageStr, $data );
 
-                    $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
+                    $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );*/
 
-                    $data = $this->replacePopup($data, $imageStr);
+                    //$data = $this->replacePopup($data, $imageStr);
                 }
             }
         }
