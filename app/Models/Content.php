@@ -275,6 +275,8 @@ class Content extends Model
                     $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );*/
 
                     //$data = $this->replacePopup($data, $imageStr);
+                    $data = str_replace( 'http://desk.thebear.group:8055/assets/' . $item, $imageStr, $data );
+
                 }
             }
         }
